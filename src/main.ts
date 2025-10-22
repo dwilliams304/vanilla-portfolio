@@ -1,5 +1,9 @@
 import "./style.css";
-import { CustomizationBar } from "./components/CustomizationBar";
+import { CustomizationBar } from "./components/";
+import { AboutSection,
+    ProjectsSection,
+    ContactSection
+ } from "./sections";
 
 // document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 //   <div>
@@ -8,3 +12,7 @@ import { CustomizationBar } from "./components/CustomizationBar";
 // `
 
 CustomizationBar();
+
+AboutSection();
+ProjectsSection();
+ContactSection();
