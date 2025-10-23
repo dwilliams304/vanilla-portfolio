@@ -5,12 +5,6 @@ import { AboutSection,
     ContactSection
  } from "./sections";
 
-// document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-//   <div>
-//     // <h1>daviswilliams.dev</h1>
-//   </div>
-// `
-
 CustomizationBar();
 
 AboutSection();

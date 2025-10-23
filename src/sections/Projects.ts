@@ -1,18 +1,10 @@
 import { DummyProjectData } from "../data/projectData";
+import { GetSection } from "../utils/GetSection";
 
 import type { Project } from "../data/projectData";
 
 export function RenderProjects(projectsList: Project[]){
-    let section = document.getElementById("projects");
-
-    if(!section) {
-        const content = document.getElementById("content");
-        if(!content) return;
-
-        section = document.createElement("section");
-        section.classList.add("projects");
-        content.appendChild(section);
-    }
+    const section = GetSection("projects");
 
     if(projectsList.length === 0){
         const error = document.createElement("div");
