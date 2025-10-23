@@ -1,5 +1,7 @@
 import { CustomizationBar } from "./CustomizationBar";
+import { InitHeader } from "./Header";
 
 export {
-    CustomizationBar
+    CustomizationBar,
+    InitHeader as Header
 }
