@@ -4,8 +4,9 @@ import { AboutSection,
     ProjectsSection,
     ContactSection
  } from "./sections";
+ import { customOptions } from "./data/customizationOptions";
 
-CustomizationBar();
+CustomizationBar(customOptions);
 
 AboutSection();
 ProjectsSection();
