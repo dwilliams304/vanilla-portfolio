@@ -1,4 +1,4 @@
-export function Contact() {
+export function InitContact() {
     const section = document.getElementById("contact");
     if (!section) return;
 

@@ -1,4 +1,3 @@
-import { DummyProjectData } from "../data/projectData";
 import { GetSection } from "../utils/GetSection";
 
 import type { Project } from "../data/projectData";
@@ -38,6 +37,6 @@ function CreateCard(data: Project, key: number | string): HTMLElement{
 }
 
 
-export function InitProjects(){
-    RenderProjects(DummyProjectData);
+export function InitProjects(projectsList: Project[]){
+    RenderProjects(projectsList);
 }

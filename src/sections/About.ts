@@ -1,7 +1,7 @@
 import type { AboutInfo } from "../types";
 import { GetSection } from "../utils/GetSection";
 
-export function About(aboutInfo: AboutInfo){
+export function InitAbout(aboutInfo: AboutInfo){
     const section = GetSection("about");
     if(!section) return;
 

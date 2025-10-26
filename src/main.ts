@@ -1,15 +1,16 @@
 import "./styles/reset.css";
-import "./styles/main.css";
-import { CustomizationBar } from "./components/";
-import { AboutSection,
-    ProjectsSection,
-    ContactSection
- } from "./sections";
+import "./styles/index.css";
+import "./styles/components.css";
+import "./styles/sections.css";
 import { customizationOptions } from "./data/customizationOptions";
 import { aboutData } from "./data/aboutData";
+import { DummyProjectData } from "./data/projectData";
 
-CustomizationBar(customizationOptions);
 
-AboutSection(aboutData);
-ProjectsSection();
-ContactSection();
+
+import { InitComponents } from "./components/";
+import { InitSections } from "./sections";
+
+
+InitComponents(customizationOptions);
+InitSections(aboutData, DummyProjectData);

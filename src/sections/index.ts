@@ -1,9 +1,12 @@
-import { About } from "./About";
+import { InitAbout } from "./About";
 import { InitProjects } from "./Projects";
-import { Contact } from "./Contact";
+import { InitContact } from "./Contact";
+import type { Project } from "../data/projectData";
+import type { AboutInfo } from "../types";
 
-export {
-    About as AboutSection,
-    InitProjects as ProjectsSection,
-    Contact as ContactSection
+
+export function InitSections(aboutData: AboutInfo, projectData: Project[]){
+    InitAbout(aboutData);
+    InitProjects(projectData);
+    InitContact();
 }
