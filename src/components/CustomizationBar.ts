@@ -35,6 +35,14 @@ export function CustomizationBar(options: typeof customizationOptions){
             container.appendChild(select);
             bar.appendChild(container);
         }
+        else{
+            const toggle = document.createElement("input")
+            toggle.type = "checkbox";
+            toggle.id = key;
+            
+            container.appendChild(toggle);
+            bar.appendChild(container);
+        }
 
         
     }
