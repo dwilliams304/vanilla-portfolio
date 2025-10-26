@@ -1,3 +1,41 @@
+/* Header */
+
+header
+{
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+header h1{
+  font-size: 40px;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+
+header h1:hover {
+    animation: header-hover 500ms infinite;
+}
+
+@keyframes header-hover {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+
+/* Customization Bar */
 #customization-bar
 {
   width: 75%;

@@ -1,0 +1,30 @@
+/* About Section */
+
+.about-card {
+    width: 75%;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 2rem;
+    margin: 0 auto
+}
+
+.about-card-content
+{
+    display: flex;
+    flex-direction: column;
+    gap: 14px 0;
+    width: 65%;
+}
+
+.about-card-content h2{
+    font-size: 32px;
+}
+.about-card-content h3{
+    font-size: 24px;
+}
+
+.img-coin
+{
+    border-radius: 100%;
+    border: 2px solid var(--primaryColor);
+}

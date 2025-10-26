@@ -6,8 +6,8 @@ export function InitAbout(aboutInfo: AboutInfo){
     if(!section) return;
 
     section.innerHTML = `
-        <div class="about-container">
-            <div>
+        <div class="about-card">
+            <div class="about-card-content">
                 <h2>${aboutInfo.h2}</h2>
                 <h3>${aboutInfo.h3}</h3>
                 <p>${aboutInfo.description}</p>

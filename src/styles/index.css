@@ -1,16 +1,39 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  
+  /* Colors */
+  --primaryColor: #02F0A1;
+  --primaryColor_Highlight: #73FACD;
+  --secondaryColor: #F00251;
+  --backgroundColor: #1E2526;
+  --backgroundColor_Dark: #030b0b;
+  --textColor: #F7FFFD;
+  --textColor_Dark: #272727;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* Text sizes */
+  --txt_SM: none;
+  --txt_MD: none;
+  --txt_LG: none;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* Padding */
+  --pd_SM: none;
+  --pd_MD: none;
+  --pd_LG: none;
+
+  /* Shadows */
+  --shd_SM: none;
+  --shd_MD: none;
+  --shd_LG: var(--backgroundColor_Dark) 0px 48px 100px 0px;
+
+  /* Transition */
+  --trs_SHORT: all 100ms ease-in-out;
+  --trs_MED: all 175ms ease-in-out;
+  --trs_LONG: all 300ms ease-in-out;
+}
+
+body {
+  background-color: var(--backgroundColor);
+  color: var(--textColor)
 }
 
 
@@ -21,20 +44,51 @@
   flex-direction: column;
 }
 
+/* HIGHLIGHT  PRIMARY COLOR, COLOR ONLY*/
+.txt-highlight-p-co {
+  color: var(--primaryColor);
+}
+/* HIGHLIGHT PRIMARY COLOR, COLOR W/ UNDERLINE */
+.txt-highlight-p-cul {
+  color: var(--primaryColor);
+  text-decoration: underline;
+}
+
+/* Underline grows from center to edge of text */
+.txt-underline-effect{
+  position: relative;
+}
+.txt-underline-effect::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-bottom: 1px solid var(--secondaryColor);
+  transform: scaleX(0);
+
+  transition: transform 175ms ease-in-out;
+}
+.txt-underline-effect:hover::before {
+  transform: scaleX(100%);
+}
+
 
 
 #sections-list {
   position: fixed;
-  left: 2rem;
+  width: 11%;
+  left: 0px;
   text-transform: uppercase;
   font-size: 24px;
   font-weight: 600;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  text-align: right;
   gap: 10px 0px;
+  text-align: right;
 }
+
 #sections-list li:hover{
   cursor: pointer;
   color: rgb(177, 35, 0);
