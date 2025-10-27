@@ -1,6 +1,6 @@
 import { GetSection } from "../utils/GetSection";
 
-import type { Project } from "../data/projectData";
+import type { Project } from "../types";
 
 export function RenderProjects(projectsList: Project[]){
     const section = GetSection("projects");

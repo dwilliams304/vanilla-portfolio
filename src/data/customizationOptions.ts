@@ -1,8 +1,5 @@
-export type CustomizationValue = string[] | "toggle";
+import type { ICustomOptions } from "../types";
 
-export interface ICustomOptions {
-    [key: string]: CustomizationValue;
-}
 
 export const customizationOptions: ICustomOptions = {
     theme: ["Retro", "Sci-Fi"],

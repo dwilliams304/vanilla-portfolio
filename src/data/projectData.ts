@@ -3,13 +3,9 @@
     This file exists to test project data being listed, to prevent too many DB fetch requests.
 */
 
-export type Project = {
-    projectName: string;
-    projectImg: string;
-    techUsed: string[];
-    projectDescription: string;
-    links: [string, string];
-}
+import type { Project } from "../types";
+
+
 
 export const DummyProjectData: Project[] = [
     {

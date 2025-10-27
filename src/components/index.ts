@@ -1,4 +1,4 @@
-import type { ICustomOptions } from "../data/customizationOptions";
+import type { ICustomOptions } from "../types";
 import { CustomizationBar } from "./CustomizationBar";
 import { InitHeader } from "./Header";
 
