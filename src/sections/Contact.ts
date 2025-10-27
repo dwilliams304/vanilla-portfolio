@@ -1,10 +1,12 @@
+import { GetSection } from "../utils/GetSection";
+
 export function InitContact() {
-    const section = document.getElementById("contact");
+    const section = GetSection("contact");
     if (!section) return;
 
-    section.innerHTML = `
-        <div>
-            <h2>Placeholder contact section</h2>
-        </div>
-    `;
+    // section.innerHTML = `
+    //     <div>
+    //         <h2>Placeholder contact section</h2>
+    //     </div>
+    // `;
 }
