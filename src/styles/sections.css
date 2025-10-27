@@ -28,3 +28,46 @@
     border-radius: 100%;
     border: 2px solid var(--primaryColor);
 }
+
+
+
+/* Projects Section */
+#projects
+{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem 0;
+    width: 85%;
+    margin: 0 auto;
+}
+
+.project-card
+{
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 2rem;
+}
+.project-card-left
+{
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+.project-card h3{
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.project-card-right
+{
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.project-card-buttons button
+{
+    padding: 6px 12px;
+}

@@ -29,8 +29,18 @@ function CreateCard(data: Project, key: number | string): HTMLElement{
 
     element.innerHTML =
     `
-        <h3>${data.projectName}</h3>
-        <p>${data.projectDescription}</p>
+        <div class="project-card-left">
+            <h3>${data.projectName}</h3>
+            <p>${data.projectDescription}</p>
+        </div>
+        <div class="project-card-right">
+            <img src=${data.projectImg}
+            />
+            <div class="project-card-buttons">
+                <button>GitHub</button>
+                <button>Demo</button>
+            </div>
+        </div>
     `;
 
     return element;

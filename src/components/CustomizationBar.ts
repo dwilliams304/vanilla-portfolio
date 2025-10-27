@@ -5,10 +5,13 @@ export function CustomizationBar(options: typeof customizationOptions){
     const bar = document.getElementById("customization-bar");
     if(!bar) return;
 
+
     bar.innerHTML = `
         <h2 class='bar-header'>Customization</h2>
     `;
 
+    const optionsContainers = document.createElement("div");
+    optionsContainers.classList.add("customization-options")
     for (const [key, value] of Object.entries(options)){
         const container = document.createElement("div");
         container.classList.add("option-container");
@@ -33,7 +36,7 @@ export function CustomizationBar(options: typeof customizationOptions){
             })
 
             container.appendChild(select);
-            bar.appendChild(container);
+            optionsContainers.appendChild(container);
         }
         else{
             const toggle = document.createElement("input")
@@ -41,9 +44,10 @@ export function CustomizationBar(options: typeof customizationOptions){
             toggle.id = key;
             
             container.appendChild(toggle);
-            bar.appendChild(container);
+            optionsContainers.appendChild(container);
         }
-
+        
+        bar.appendChild(optionsContainers);
         
     }
 }

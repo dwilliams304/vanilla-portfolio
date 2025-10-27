@@ -40,10 +40,41 @@ header h1:hover {
 {
   width: 75%;
   display: flex;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
   padding: 2rem 0;
-  background-color: black;
-  margin: 1rem auto;
-  border-radius: 20px;
+  gap: 32px;
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(10px);
+  border-radius: 50px;
+  border-bottom: 1px solid var(--primaryColor);
+}
+#customization-bar.inactive
+{
+  display: none;
+}
+
+.bar-header
+{
+  font-size: 30px;
+  font-weight: 600;
+}
+.customization-options
+{
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.option-container
+{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 14px 0;
+  font-size: 24px;
 }
