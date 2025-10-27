@@ -58,8 +58,9 @@ section
     gap: 14px;
 }
 .project-card h3{
-    font-size: 24px;
-    font-weight: 600;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--primaryColor);
 }
 
 .project-card-right

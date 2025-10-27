@@ -6,9 +6,12 @@ export function InitHeader(){
     const header = document.getElementById("site-header");
     if(!header) return;
 
+    header.classList.add('txt-highlight-p-co');
+
     header.addEventListener("click", () => {
         currentHeader = GetRandomHeader();
         console.log(currentHeader);
         header.textContent = currentHeader + ".dev";
+        
     })
 }

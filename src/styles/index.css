@@ -49,6 +49,10 @@ body {
 .txt-highlight-p-co {
   color: var(--primaryColor);
 }
+/* HIGHLIGHT SECONDARY COLOR, COLOR ONLY*/
+.txt-highlight-s-co {
+  color: var(--secondaryColor);
+}
 /* HIGHLIGHT PRIMARY COLOR, COLOR W/ UNDERLINE */
 .txt-highlight-p-cul {
   color: var(--primaryColor);
@@ -96,6 +100,19 @@ body {
 
 #sections-list li:hover{
   cursor: pointer;
-  color: rgb(177, 35, 0);
-  transition: 0.2s ease-in-out;
+  color: var(--secondaryColor);
+  transition: var(--trs_SHORT)
+}
+
+
+button
+{
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px solid var(--primaryColor);
+  color: var(--primaryColor);
+  cursor: pointer;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: 500;
 }
