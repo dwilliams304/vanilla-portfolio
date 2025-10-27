@@ -38,10 +38,11 @@ body {
 
 
 #content{
-  width: 75%;
+  width: 60%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  gap: 4rem;
 }
 
 /* HIGHLIGHT  PRIMARY COLOR, COLOR ONLY*/
@@ -78,15 +79,19 @@ body {
 
 #sections-list {
   position: fixed;
-  width: 11%;
+  width: 15%;
   left: 0px;
   text-transform: uppercase;
   font-size: 24px;
   font-weight: 600;
+  text-align: right;
+}
+
+#sections-list ul
+{
   display: flex;
   flex-direction: column;
-  gap: 10px 0px;
-  text-align: right;
+  gap: 14px;
 }
 
 #sections-list li:hover{
