@@ -36,6 +36,12 @@ body {
   color: var(--textColor)
 }
 
+textarea
+{
+  resize: none;
+  height: 100px;
+}
+
 
 #content{
   width: 60%;
