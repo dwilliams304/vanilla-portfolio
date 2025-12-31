@@ -3,7 +3,7 @@ import "./styles/index.css";
 import "./styles/components.css";
 import "./styles/sections.css";
 
-import { Component, RenderComponent } from "./components/RenderComponent";
+import { RenderComponent, type IComponent } from "./components/RenderComponent";
 
 
 
@@ -15,42 +15,37 @@ const coolModeCSSTag = "cool-mode";
 const root = document.getElementById("root")!;
 
 
-const CreateButton = (): HTMLElement => {
-    const funButton = document.createElement("button");
-    funButton.classList.add("primary-btn", "mt-10");
-    funButton.textContent = "Switch Display";
-    funButton.addEventListener("click", () => SwitchDisplayMode());
 
-    return funButton;
-}
+const switchDisplayModeButton = RenderComponent({
+    rootElement: document.createElement("button"),
+    content: "Switch Modes",
+    className: "primary-btn",
+    key: "switch-mode-btn",
+    onClick: () => SwitchDisplayMode()
+})
 
-
-const appComponent = new Component(
-    document.createElement("div"),
+const appComponent: IComponent = 
+{
+    rootElement: document.createElement("div"),
+    content: 
     `
         <h1>Wow what a cool app!</h1>
     `,
+    elementConnection: 
     { 
         parent: root,
         children: [
-            RenderComponent(new Component(
-                document.createElement("main")
-            )), 
-            RenderComponent(new Component(
-                document.createElement("address"),
-                undefined,
-                undefined,
-                undefined,
-                undefined,
-                () => console.log("We just rendered a test children component within the appComponent")
-            )),
-            CreateButton()
+            RenderComponent({
+                rootElement: document.createElement("main")
+            }), 
+            RenderComponent({
+                rootElement: document.createElement("address"),
+                onRender: () => console.log("We just rendered a test children component within the appComponent")
+            }),
+            switchDisplayModeButton
         ]
-    },
-    
-
-)
-
+    }
+}
 
 
 

@@ -1,38 +1,29 @@
-export class Component
+export interface IComponent
 {
-    constructor(
-        rootElement: HTMLElement,
-        content?: string,
-        elementConnection?: { parent?: HTMLElement | null, children?: HTMLElement[] | null} | undefined,
-        className?: string,
-        key?: string,
-        onRender?: () => void,
-    ){
-        this.rootElement = rootElement;
-        this.key = key;
-        this.content = content;
-        this.elementConnection = elementConnection;
-        this.className = className;
-        this.onRender = onRender;
+    rootElement: HTMLElement
+    key?: string;
+    content?: string;
+    elementConnection?: { 
+        parent?: HTMLElement, 
+        children?: HTMLElement[] 
     }
-
-    readonly rootElement: HTMLElement
-    readonly key: string | undefined;
-    readonly content: string | undefined | null;
-    readonly elementConnection: undefined | { parent?: HTMLElement | null, children?: HTMLElement[]  | null }
-    readonly className: string | undefined | null;
-    readonly onRender: (() => void) | undefined | null;
+    className?: string;
+    onRender?: () => void;
+    onRefresh?: () => void
+    onClick?: () => void;
 }
 
 
-
-export function RenderComponent(component: Component): HTMLElement{
-    const {rootElement, key, content, elementConnection, className, onRender} = component;
+export function RenderComponent(component: IComponent): HTMLElement{
+    const {rootElement, key, content, elementConnection, className, onRender, onClick} = component;
 
     if(key) rootElement.id = key;
     if(elementConnection?.parent) elementConnection.parent.appendChild(rootElement);
     if(content) rootElement.innerHTML = content
     if(className) rootElement.className = className;
+    if(onClick){
+        rootElement.addEventListener("click", onClick);
+    }
 
     if(elementConnection?.children){
         elementConnection.children.forEach((child, i) => {
@@ -42,7 +33,7 @@ export function RenderComponent(component: Component): HTMLElement{
     }
 
 
-    if(onRender !== null && onRender !== undefined) {
+    if(onRender) {
         onRender();
     }
 
