@@ -10,8 +10,6 @@ export function InitHeader(){
 
     header.addEventListener("click", () => {
         currentHeader = GetRandomHeader();
-        console.log(currentHeader);
         header.textContent = currentHeader + ".dev";
-        
     })
 }

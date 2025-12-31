@@ -24,6 +24,7 @@ const switchDisplayModeButton = RenderComponent({
     onClick: () => SwitchDisplayMode()
 })
 
+
 const appComponent: IComponent = 
 {
     rootElement: document.createElement("div"),
@@ -35,13 +36,6 @@ const appComponent: IComponent =
     { 
         parent: root,
         children: [
-            RenderComponent({
-                rootElement: document.createElement("main")
-            }), 
-            RenderComponent({
-                rootElement: document.createElement("address"),
-                onRender: () => console.log("We just rendered a test children component within the appComponent")
-            }),
             switchDisplayModeButton
         ]
     }
@@ -52,12 +46,10 @@ const appComponent: IComponent =
 
 const SwitchDisplayMode = (): void => {
     isSimpleMode = !isSimpleMode;
+    var app = RenderComponent(appComponent);
     app.classList.remove(`${isSimpleMode ? coolModeCSSTag : simpleModeCSSTag}`);
     app.classList.add(`${isSimpleMode ? simpleModeCSSTag : coolModeCSSTag}`)
-    RenderComponent(appComponent);
 }
 
-
-const app = RenderComponent(appComponent);
 
 SwitchDisplayMode();
