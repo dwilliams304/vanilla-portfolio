@@ -13,14 +13,13 @@ const RenderTags = (tags: string[]) : HTMLElement => {
                 rootElement: document.createElement("span"),
                 className: "tech",
                 content: " " + tag,
-                key: i.toString()
+                id: i.toString()
             })
             tagElements.push(element);
         })
     }
 
     const tagsContainer = RenderComponent({
-        rootElement: document.createElement("div"),
         className: "tags",
         elementConnection: {
             children: tagElements ? tagElements : undefined
@@ -32,14 +31,13 @@ const RenderTags = (tags: string[]) : HTMLElement => {
 
 }
 
-const CreateProjectCard = (project: Project, key: string): HTMLElement => {
+const CreateProjectCard = (project: Project, id: string): HTMLElement => {
     const {projectName, projectDescription, projectImg} = project;
     const tags = RenderTags(project.techUsed);
 
     const card = RenderComponent({
-        rootElement: document.createElement("div"),
         className: "project-card",
-        key: key,
+        id: id,
         content: `
             <div class="project-card-left">
                 <h3 class="fancy-hover"-underline">${projectName}</h3>
@@ -65,7 +63,7 @@ export function RenderProjectsSection(projects: Project[]): HTMLElement{
     let sectionComponentObject: IComponent = {
         rootElement: document.createElement("section"),
         className: "projects",
-        key: "projects"
+        id: "projects"
     }
 
     const cards: HTMLElement[] = [];

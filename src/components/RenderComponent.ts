@@ -1,7 +1,7 @@
 export interface IComponent
 {
-    rootElement: HTMLElement
-    key?: string;
+    rootElement?: HTMLElement
+    id?: string;
     content?: string;
     elementConnection?: { 
         parent?: HTMLElement, 
@@ -15,9 +15,11 @@ export interface IComponent
 
 
 export function RenderComponent(component: IComponent): HTMLElement{
-    const {rootElement, key, content, elementConnection, className, onRender, onClick} = component;
+    let {rootElement} = component;
+    const {id, content, elementConnection, className, onRender, onClick} = component;
 
-    if(key) rootElement.id = key;
+    if(!rootElement) rootElement = document.createElement("div");
+    if(id) rootElement.id = id;
     if(elementConnection?.parent) elementConnection.parent.appendChild(rootElement);
     if(content) rootElement.innerHTML = content
     if(className) rootElement.className = className;

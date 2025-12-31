@@ -22,8 +22,7 @@ const switchDisplayModeButton = RenderComponent({
     rootElement: document.createElement("button"),
     content: "Switch Modes",
     className: "primary-btn",
-    key: "switch-mode-btn",
-    onClick: () => SwitchDisplayMode()
+    onClick: () => UpdateApp()
 })
 
 const aboutSection = RenderComponent({
@@ -49,33 +48,27 @@ const aboutSection = RenderComponent({
 const projectsSection = RenderProjectsSection(DummyProjectData);
 
 
-const appComponent: IComponent = 
-{
-    rootElement: document.createElement("div"),
-    content: 
-    `
-        <h1>Wow what a cool app!</h1>
-    `,
-    elementConnection: 
-    { 
-        parent: root,
-        children: [
-            switchDisplayModeButton,
-            aboutSection,
-            projectsSection
-        ]
-    }
-}
 
-
-
-
-const SwitchDisplayMode = (): void => {
+const UpdateApp = (): void => {
     isSimpleMode = !isSimpleMode;
-    var app = RenderComponent(appComponent);
-    app.classList.remove(`${isSimpleMode ? coolModeCSSTag : simpleModeCSSTag}`);
-    app.classList.add(`${isSimpleMode ? simpleModeCSSTag : coolModeCSSTag}`)
+
+    const appComponent: IComponent = 
+    {
+        elementConnection: 
+        { 
+            parent: root,
+            children: [
+                switchDisplayModeButton,
+                aboutSection,
+                projectsSection
+            ]
+        },
+        className: `app ${isSimpleMode ? simpleModeCSSTag : coolModeCSSTag}`
+    }
+    
+    root.innerHTML = "";
+    RenderComponent(appComponent);
 }
 
 
-SwitchDisplayMode();
+UpdateApp();
