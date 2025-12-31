@@ -9,3 +9,8 @@ export function RenderSections(aboutData: AboutInfo, projectData: Project[]){
     InitProjects(projectData);
     InitContact();
 }
+
+
+export function CreateSections(): HTMLElement {
+    return new HTMLElement
+}
