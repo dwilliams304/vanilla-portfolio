@@ -12,11 +12,28 @@ import { RenderSimpleMode } from "./simple/SimpleMode";
 import { InitComponents } from "./components/";
 import { RenderSections } from "./sections";
 import { RerenderSections } from "./utils/ReRender";
+import { Component, RenderComponent } from "./components/RenderComponent";
 
 let isSimpleMode = true;
 
-const  SwitchDisplayMode = (): void => {
-    isSimpleMode = !isSimpleMode;
+const root = document.getElementById("root")!;
+
+const appComponent = new Component(
+    document.createElement("div"),
+    "",
+    `
+        <h1>Wow what a cool app!</h1>
+    `,
+    root,
+    undefined,
+    ["app-container"]
+)
+
+RenderComponent(appComponent);
+
+
+const SwitchDisplayMode = (setTo: boolean): void => {
+    isSimpleMode = setTo;
     console.log(`Is in simple mode? ${isSimpleMode}`);
     RerenderSections();
     if(isSimpleMode) RenderSimpleMode(aboutData, DummyProjectData);
@@ -24,4 +41,4 @@ const  SwitchDisplayMode = (): void => {
 }
 
 InitComponents(SwitchDisplayMode);
-SwitchDisplayMode();
+SwitchDisplayMode(true);
