@@ -17,6 +17,8 @@ export function RerenderComponent(componentId: string){
     ClearInnerHtml(component);
 }
 
+
+
 export function RerenderSections(){
     const about = GetSection("about");
     ClearInnerHtml(about);

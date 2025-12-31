@@ -3,12 +3,32 @@ import type { AboutInfo, Project } from "../types";
 import { GetSection } from "../utils/GetSection";
 
 export function RenderSimpleMode(aboutData: AboutInfo, projectData: Project[]){
-    const section = GetSection("about");
+    const content = GetSection("content");
 
-    if(!section) return;
+    if(!content) return;
 
-    section.classList.add("simple-mode");
+    content.classList.add("simple-mode");
 
+    const aboutSection = GetSection("about");
+    aboutSection.classList.add("about-simple");
+    aboutSection.innerHTML = 
+    `
+        <div class="about-card-content">
+            <h2>${aboutData.h2}</h2>
+            <h3>${aboutData.h3}</h3>
+            <p>${aboutData.description}</p>
+        </div>
+        <div>
+            <img 
+                src=${aboutData.img} 
+                class="img-coin"
+            />
+        </div>
+    `;
+
+    const projectSection = GetSection("projects");
+    projectSection.classList.add("projects-simple")
+    
     const projectsList = document.createElement("div");
     projectsList.classList.add("projects-simple");
     
@@ -18,7 +38,7 @@ export function RenderSimpleMode(aboutData: AboutInfo, projectData: Project[]){
         })
     }
 
-    section.appendChild(projectsList);
+    projectSection.appendChild(projectsList);
 }
 
 
