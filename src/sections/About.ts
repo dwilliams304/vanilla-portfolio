@@ -1,23 +1,26 @@
+import { RenderComponent } from "../components/RenderComponent";
 import type { AboutInfo } from "../types";
-import { GetSection } from "../utils/GetSection";
 
-export function InitAbout(aboutInfo: AboutInfo){
-    const section = GetSection("about");
-    if(!section) return;
-
-    section.innerHTML = `
+export function RenderAboutSection(aboutData: AboutInfo): HTMLElement {
+    const section = RenderComponent({
+        rootElement: document.createElement("section"),
+        content: `
         <div class="about-card">
             <div class="about-card-content">
-                <h2>${aboutInfo.h2}</h2>
-                <h3>${aboutInfo.h3}</h3>
-                <p>${aboutInfo.description}</p>
+                <h2>${aboutData.h2}</h2>
+                <h3>${aboutData.h3}</h3>
+                <p>${aboutData.description}</p>
             </div>
             <div>
                 <img 
-                    src=${aboutInfo.img} 
+                    src=${aboutData.img} 
                     class="img-coin"
                 />
             </div>
         </div>
-    `;
+    `
+    });
+
+
+    return section;
 }

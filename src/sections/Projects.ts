@@ -4,10 +4,9 @@ import { RenderComponent, type IComponent } from "../components/RenderComponent"
 
 
 const RenderTags = (tags: string[]) : HTMLElement => {
-
     const tagElements: HTMLElement[] = [];
-    if(tags){
 
+    if(tags){
         tags.forEach((tag, i) => {
             const element = RenderComponent({
                 rootElement: document.createElement("span"),
@@ -42,7 +41,6 @@ const CreateProjectCard = (project: Project, id: string): HTMLElement => {
             <div class="project-card-left">
                 <h3 class="fancy-hover"-underline">${projectName}</h3>
                 <p>${projectDescription}</p>
-                ${tags}
             </div>
             <div class="project-card-right">
                 <img src=${projectImg} />

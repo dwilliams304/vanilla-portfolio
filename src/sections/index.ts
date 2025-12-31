@@ -1,16 +1,15 @@
-import { InitAbout } from "./About";
-import { InitProjects } from "./Projects";
-import { InitContact } from "./Contact";
+import { RenderAboutSection } from "./About";
+import { RenderProjectsSection } from "./Projects";
 import type { Project, AboutInfo } from "../types";
 
 
-export function RenderSections(aboutData: AboutInfo, projectData: Project[]){
-    InitAbout(aboutData);
-    InitProjects(projectData);
-    InitContact();
-}
 
+export function RenderAllSections(aboutData: AboutInfo, projectData: Project[]): HTMLElement[]{
+    const sections: HTMLElement[] = [];
 
-export function CreateSections(): HTMLElement {
-    return new HTMLElement
+    const aboutSection = RenderAboutSection(aboutData);
+    const projectsSection = RenderProjectsSection(projectData);
+
+    sections.push(aboutSection, projectsSection);
+    return sections;
 }
