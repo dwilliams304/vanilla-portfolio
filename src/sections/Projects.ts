@@ -1,63 +1,90 @@
-import { GetSection } from "../utils/GetSection";
-
 import type { Project } from "../types";
+import { RenderComponent, type IComponent } from "../components/RenderComponent";
 
-export function RenderProjects(projectsList: Project[]){
-    const section = GetSection("projects");
 
-    if(projectsList.length === 0){
-        const error = document.createElement("div");
-        error.innerHTML = 
-        `
-            <h2>There was an error loading the project data. Please bother me somewhere if you see this!</h2>
-        `;
 
-        section.appendChild(error);
-        return;
-    }
+const RenderTags = (tags: string[]) : HTMLElement => {
 
-    projectsList.map((project, i) => section.appendChild(CreateCard(project, i)));
-}
-
-function CreateCard(data: Project, key: number | string): HTMLElement{
-    const element = document.createElement("div");
-    element.classList.add("project-card")
-    element.id = String(key);
-
-    
-
-    element.innerHTML =
-    `
-        <div class="project-card-left">
-            <h3 class="fancy-hover-underline">${data.projectName}</h3>
-            <p>${data.projectDescription}</p>
-            <div class="tags">
-            </div>
-        </div>
-        <div class="project-card-right">
-            <img src=${data.projectImg}
-            />
-            <div class="project-card-buttons">
-                <button class="primary-btn">Demo</button>
-                <button class="primary-btn">GitHub</button>
-            </div>
-        </div>
-    `;
-
-    const tags = element.getElementsByClassName("tags")[0];
+    const tagElements: HTMLElement[] = [];
     if(tags){
-        data.techUsed.map((tech) => {
-            const tag = document.createElement("span");
-            tag.classList.add("tech");
-            tag.textContent = " " + tech;
-            tags.appendChild(tag);
+
+        tags.forEach((tag, i) => {
+            const element = RenderComponent({
+                rootElement: document.createElement("span"),
+                className: "tech",
+                content: " " + tag,
+                key: i.toString()
+            })
+            tagElements.push(element);
         })
     }
 
-    return element;
+    const tagsContainer = RenderComponent({
+        rootElement: document.createElement("div"),
+        className: "tags",
+        elementConnection: {
+            children: tagElements ? tagElements : undefined
+        }
+    })
+
+    return tagsContainer;
+
+
 }
 
+const CreateProjectCard = (project: Project, key: string): HTMLElement => {
+    const {projectName, projectDescription, projectImg} = project;
+    const tags = RenderTags(project.techUsed);
 
-export function InitProjects(projectsList: Project[]){
-    RenderProjects(projectsList);
+    const card = RenderComponent({
+        rootElement: document.createElement("div"),
+        className: "project-card",
+        key: key,
+        content: `
+            <div class="project-card-left">
+                <h3 class="fancy-hover"-underline">${projectName}</h3>
+                <p>${projectDescription}</p>
+                ${tags}
+            </div>
+            <div class="project-card-right">
+                <img src=${projectImg} />
+                <div class="project-card-buttons">
+                    <button class="primary-btn">Demo</button>
+                    <button class="primary-btn">GitHub</button>
+                </div>
+            </div>
+        `
+    });
+
+    
+    
+    return card;
+}
+
+export function RenderProjectsSection(projects: Project[]): HTMLElement{
+    let sectionComponentObject: IComponent = {
+        rootElement: document.createElement("section"),
+        className: "projects",
+        key: "projects"
+    }
+
+    const cards: HTMLElement[] = [];
+    if(projects.length === 0){
+        sectionComponentObject.content = `<h2>For some reason the projects' data couldn't be loaded. Please bother me if you see this</h2>`
+    }
+    else{
+        projects.forEach((project, i) => {
+            const card = CreateProjectCard(project, i.toString());
+            cards.push(card);
+        })
+
+        sectionComponentObject.elementConnection = {
+            children: cards
+        }
+    }
+
+
+    const section = RenderComponent(sectionComponentObject);
+
+    return section;
 }

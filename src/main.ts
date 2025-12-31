@@ -5,7 +5,9 @@ import "./styles/sections.css";
 
 import { RenderComponent, type IComponent } from "./components/RenderComponent";
 
-
+import { aboutData } from "./data/aboutData";
+import { DummyProjectData } from "./data/projectData";
+import { RenderProjectsSection } from "./sections/Projects";
 
 let isSimpleMode = true;
 const simpleModeCSSTag = "simple-mode";
@@ -24,6 +26,28 @@ const switchDisplayModeButton = RenderComponent({
     onClick: () => SwitchDisplayMode()
 })
 
+const aboutSection = RenderComponent({
+    rootElement: document.createElement("section"),
+    content: `
+        <div class="about-card">
+            <div class="about-card-content">
+                <h2>${aboutData.h2}</h2>
+                <h3>${aboutData.h3}</h3>
+                <p>${aboutData.description}</p>
+            </div>
+            <div>
+                <img 
+                    src=${aboutData.img} 
+                    class="img-coin"
+                />
+            </div>
+        </div>
+    `
+});
+
+
+const projectsSection = RenderProjectsSection(DummyProjectData);
+
 
 const appComponent: IComponent = 
 {
@@ -36,7 +60,9 @@ const appComponent: IComponent =
     { 
         parent: root,
         children: [
-            switchDisplayModeButton
+            switchDisplayModeButton,
+            aboutSection,
+            projectsSection
         ]
     }
 }
