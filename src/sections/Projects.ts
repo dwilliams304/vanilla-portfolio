@@ -1,6 +1,17 @@
 import type { Project } from "../data/siteData";
 import { RenderComponent, type IComponent } from "../utils/RenderComponent";
 
+const createProjectButton = (text: string, link: string | undefined): string => {
+    if(link) {
+        return `
+            <button class="primary-btn" onClick="window.open('${link}')">
+                ${text}
+            </button>
+        `
+    }
+    else return ""
+}
+
 const CreateProjectCard = (project: Project, id: string): HTMLElement => {
     const {projectName, projectDescription, projectImg, techUsed} = project;
 
@@ -18,8 +29,8 @@ const CreateProjectCard = (project: Project, id: string): HTMLElement => {
             <div class="project-card-right">
                 <img src=${projectImg} />
                 <div class="project-card-buttons">
-                    <button class="primary-btn">Demo</button>
-                    <button class="primary-btn">GitHub</button>
+                    ${createProjectButton("Demo", project.links[0])}
+                    ${createProjectButton("GitHub", project.links[1])}
                 </div>
             </div>
         `

@@ -41,7 +41,7 @@ const DummyProjectData: Project[] = [
         projectImg: "https://bwsrltsxndfbxnthgmlt.supabase.co/storage/v1/object/sign/Personal%20Projects/ts-job-board.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV80MGIxMDcyMS1jZjI2LTQxZWMtOTZkNy1lYzdkYmUwNGNhNjUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQZXJzb25hbCBQcm9qZWN0cy90cy1qb2ItYm9hcmQucG5nIiwiaWF0IjoxNzYyMDQ5MDY3LCJleHAiOjE3OTM1ODUwNjd9.BykxLFkR3SN3CT0IGXZZZEnAwBQJ8l88mbLFJdbpgE0",
         techUsed: ["JavaScript", "Node", "React"],
         projectDescription: "A React website built to showoff all of my projects.",
-        links: ["https://github.com", "https://github.com"]
+        links: ["https://github.com", ""]
     },
 ]
 

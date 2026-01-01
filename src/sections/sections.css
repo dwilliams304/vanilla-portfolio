@@ -119,6 +119,7 @@ section
 .project-card-buttons
 {
     display: flex;
+    justify-content: center;
     gap: 14px;
     margin-top: 0.5rem;
 }
@@ -134,6 +135,13 @@ section
     border: 1px solid var(--primaryColor);
     padding: 4px 12px;
     border-radius: 10px;
+}
+
+.no-link {
+    font-size: 12px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Contact Section */
