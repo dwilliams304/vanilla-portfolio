@@ -3,27 +3,19 @@ import "./styles/index.css";
 import "./styles/components.css";
 import "./styles/sections.css";
 
-import { RenderComponent, type IComponent } from "./components/RenderComponent";
+import { RenderComponent, type IComponent } from "./utils/RenderComponent";
 
 import { aboutData } from "./data/aboutData";
 import { DummyProjectData } from "./data/projectData";
 import { RenderAllSections } from "./sections";
-import { RenderLayout } from "./components";
+import { RenderLayout } from "./layout";
 
 let isSimpleMode = true;
 const simpleModeCSSTag = "simple-mode";
 const coolModeCSSTag = "cool-mode";
 
 
-
-
-const root = RenderComponent({
-    id: "root",
-    elementConnection: {
-        parent: document.getElementsByTagName("body")[0]
-    }
-})
-
+const root = document.getElementById("root")!;
 
 
 const switchDisplayModeButton = RenderComponent({
@@ -36,7 +28,7 @@ const switchDisplayModeButton = RenderComponent({
 
 const sections = RenderAllSections(aboutData, DummyProjectData);
 
-
+const layout = RenderLayout(root, switchDisplayModeButton);
 
 
 const UpdateApp = (): void => {
@@ -47,13 +39,15 @@ const UpdateApp = (): void => {
         elementConnection: 
         { 
             parent: root,
-            children: [
-                switchDisplayModeButton,
-            ]
+            children: []
         },
         className: `app ${isSimpleMode ? simpleModeCSSTag : coolModeCSSTag}`
     }
     
+    layout.forEach(e => {
+        appComponent.elementConnection?.children?.push(e);
+    })
+
     sections.forEach(section => {
         appComponent.elementConnection?.children?.push(section);
     })
@@ -64,5 +58,3 @@ const UpdateApp = (): void => {
 
 
 UpdateApp();
-
-RenderLayout(root);

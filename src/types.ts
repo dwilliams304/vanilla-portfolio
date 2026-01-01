@@ -1,10 +1,8 @@
-import type { customizationOptions } from "./data/customizationOptions";
-
 export type AboutInfo = {
-    h2: string,
-    h3: string,
-    description: string,
-    img: string
+    readonly h2: string,
+    readonly h3: string,
+    readonly description: string,
+    readonly img: string
 }
 
 export type Project = {
@@ -16,12 +14,3 @@ export type Project = {
 }
 
 export type CustomizationValue = string[] | "toggle";
-
-export interface ICustomOptions {
-    [key: string]: CustomizationValue;
-}
-
-export type CustomizationState = {
-    [K in keyof typeof customizationOptions]:
-        typeof customizationOptions[K] extends string[] ? string : boolean;
-}

@@ -1,38 +1,8 @@
 import type { Project } from "../types";
-import { RenderComponent, type IComponent } from "../components/RenderComponent";
-
-
-
-const RenderTags = (tags: string[]) : HTMLElement => {
-    const tagElements: HTMLElement[] = [];
-
-    if(tags){
-        tags.forEach((tag, i) => {
-            const element = RenderComponent({
-                rootElement: document.createElement("span"),
-                className: "tech",
-                content: " " + tag,
-                id: i.toString()
-            })
-            tagElements.push(element);
-        })
-    }
-
-    const tagsContainer = RenderComponent({
-        className: "tags",
-        elementConnection: {
-            children: tagElements ? tagElements : undefined
-        }
-    })
-
-    return tagsContainer;
-
-
-}
+import { RenderComponent, type IComponent } from "../utils/RenderComponent";
 
 const CreateProjectCard = (project: Project, id: string): HTMLElement => {
-    const {projectName, projectDescription, projectImg} = project;
-    const tags = RenderTags(project.techUsed);
+    const {projectName, projectDescription, projectImg, techUsed} = project;
 
     const card = RenderComponent({
         className: "project-card",
@@ -41,6 +11,9 @@ const CreateProjectCard = (project: Project, id: string): HTMLElement => {
             <div class="project-card-left">
                 <h3 class="fancy-hover"-underline">${projectName}</h3>
                 <p>${projectDescription}</p>
+                <div class="tags">
+                    ${techUsed?.map(tag => `<span class="tag">${tag}</span>`).join(" ")}
+                </div>
             </div>
             <div class="project-card-right">
                 <img src=${projectImg} />
@@ -51,7 +24,6 @@ const CreateProjectCard = (project: Project, id: string): HTMLElement => {
             </div>
         `
     });
-
     
     
     return card;
@@ -75,7 +47,8 @@ export function RenderProjectsSection(projects: Project[]): HTMLElement{
         })
 
         sectionComponentObject.elementConnection = {
-            children: cards
+            children: cards,
+            assignedUniqueChildId: true
         }
     }
 

@@ -4,12 +4,12 @@ export interface IComponent
     id?: string;
     content?: string;
     elementConnection?: { 
-        parent?: HTMLElement, 
-        children?: HTMLElement[] 
+        parent?: HTMLElement;
+        children?: HTMLElement[];
+        assignedUniqueChildId?: boolean;
     }
     className?: string;
     onRender?: () => void;
-    onRefresh?: () => void
     onClick?: () => void;
 }
 
@@ -30,7 +30,7 @@ export function RenderComponent(component: IComponent): HTMLElement{
     if(elementConnection?.children){
         elementConnection.children.forEach((child, i) => {
             rootElement.appendChild(child);
-            rootElement.id = i.toString();
+            if(elementConnection.assignedUniqueChildId) child.id = i.toString();
         })
     }
 

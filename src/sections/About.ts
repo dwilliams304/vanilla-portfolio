@@ -1,4 +1,4 @@
-import { RenderComponent } from "../components/RenderComponent";
+import { RenderComponent } from "../utils/RenderComponent";
 import type { AboutInfo } from "../types";
 
 export function RenderAboutSection(aboutData: AboutInfo): HTMLElement {
