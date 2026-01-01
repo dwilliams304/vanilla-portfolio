@@ -1,14 +1,11 @@
 import "./styles/reset.css";
 import "./styles/index.css";
-import "./styles/components.css";
-import "./styles/sections.css";
 
 import { RenderComponent, type IComponent } from "./utils/RenderComponent";
 
-import { aboutData } from "./data/aboutData";
-import { DummyProjectData } from "./data/projectData";
 import { RenderAllSections } from "./sections";
 import { RenderLayout } from "./layout";
+import { FetchSiteData } from "./data/siteData";
 
 let isSimpleMode = true;
 const simpleModeCSSTag = "simple-mode";
@@ -25,15 +22,16 @@ const switchDisplayModeButton = RenderComponent({
     onClick: () => UpdateApp()
 })
 
+const [aboutData, projectData] = FetchSiteData();
 
-const sections = RenderAllSections(aboutData, DummyProjectData);
+const sections = RenderAllSections(aboutData, projectData);
 
 const layout = RenderLayout(root, switchDisplayModeButton);
 
 
 const UpdateApp = (): void => {
     isSimpleMode = !isSimpleMode;
-
+    
     const appComponent: IComponent = 
     {
         elementConnection: 
@@ -47,11 +45,9 @@ const UpdateApp = (): void => {
     layout.forEach(e => {
         appComponent.elementConnection?.children?.push(e);
     })
-
-    sections.forEach(section => {
-        appComponent.elementConnection?.children?.push(section);
-    })
-
+    
+    appComponent.elementConnection?.children?.push(sections);
+    
     root.innerHTML = "";
     RenderComponent(appComponent);
 }

@@ -1,4 +1,4 @@
-import type { Project } from "../types";
+import type { Project } from "../data/siteData";
 import { RenderComponent, type IComponent } from "../utils/RenderComponent";
 
 const CreateProjectCard = (project: Project, id: string): HTMLElement => {

@@ -1,5 +1,8 @@
+import "./layout.css";
+
 import { GetRandomHeader } from "../utils/randomHeader";
 import { RenderComponent, type IComponent } from "../utils/RenderComponent"
+
 
 
 export function RenderLayout(root: HTMLElement, switchDisplayButton: HTMLElement): HTMLElement[]{
@@ -11,7 +14,7 @@ export function RenderLayout(root: HTMLElement, switchDisplayButton: HTMLElement
                 switchDisplayButton
             ]
         },
-        id: "sections-list",
+        className: "sections-list",
         content: `
             <ul>
                 <li class="txt-underline-effect">About</li>

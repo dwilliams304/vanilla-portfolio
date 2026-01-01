@@ -27,6 +27,7 @@ export function RenderComponent(component: IComponent): HTMLElement{
         rootElement.addEventListener("click", onClick);
     }
 
+
     if(elementConnection?.children){
         elementConnection.children.forEach((child, i) => {
             rootElement.appendChild(child);

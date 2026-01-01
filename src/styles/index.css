@@ -44,14 +44,6 @@ textarea
   height: 100px;
 }
 
-#content{
-  width: 60%;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
-}
-
 /* HIGHLIGHT  PRIMARY COLOR, COLOR ONLY*/
 .txt-highlight-p-co {
   color: var(--primaryColor);
@@ -70,45 +62,6 @@ textarea
 .txt-underline-effect{
   position: relative;
 }
-.txt-underline-effect::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  border-bottom: 1px solid var(--secondaryColor);
-  transform: scaleX(0);
-
-  transition: transform 175ms ease;
-}
-.txt-underline-effect:hover::before {
-  transform: scaleX(100%);
-}
-
-
-#sections-list {
-  position: fixed;
-  /* width: 15%; */
-  left: 10%;
-  text-transform: uppercase;
-  font-size: 24px;
-  font-weight: 600;
-  text-align: right;
-}
-
-#sections-list ul
-{
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-#sections-list li:hover{
-  cursor: pointer;
-  color: var(--secondaryColor);
-  transition: var(--trs_SHORT)
-}
 
 
 button
@@ -117,7 +70,6 @@ button
   border: 1px solid var(--primaryColor);
   color: var(--primaryColor);
   cursor: pointer;
-  /* border-radius: 10px; */
   font-size: 14px;
   font-weight: 500;
   padding: 0.75rem 2rem;
@@ -141,7 +93,6 @@ button
   left: 0;
   z-index: -1;
   background-color: var(--primaryColor);
-  /* border-bottom: 1px solid var(--primaryColor); */
   transform: scaleX(0);
 
   transition: transform 175ms ease;
@@ -152,7 +103,6 @@ button
 }
 .primary-btn:hover
 {
-  /* background-color: var(--primaryColor); */
   color: var(--backgroundColor_Dark);
   box-shadow: var(--glow_SM);
 }
@@ -169,6 +119,3 @@ button
   color: var(--primaryColor);
   background-color: var(--backgroundColor_Dark);
 }
-
-
-.mt-10 { margin-top: 10px; }
