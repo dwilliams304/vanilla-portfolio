@@ -21,7 +21,7 @@ const CreateProjectCard = (project: Project, id: string): HTMLElement => {
         content: `
             <div class="project-card-left">
                 <h3 class="fancy-hover"-underline">${projectName}</h3>
-                <p>${projectDescription}</p>
+                <p>${projectDescription.normal}</p>
                 <div class="tags">
                     ${techUsed?.map(tag => `<span class="tag">${tag}</span>`).join(" ")}
                 </div>
@@ -40,9 +40,9 @@ const CreateProjectCard = (project: Project, id: string): HTMLElement => {
     return card;
 }
 
-export function RenderProjectsSection(projects: Project[]): HTMLElement{
+export function RenderProjectsSection(projects: Project[]){
     let sectionComponentObject: IComponent = {
-        rootElement: document.createElement("section"),
+        element: document.createElement("section"),
         className: "projects",
         id: "projects"
     }
@@ -64,7 +64,10 @@ export function RenderProjectsSection(projects: Project[]): HTMLElement{
     }
 
 
-    const section = RenderComponent(sectionComponentObject);
+    const projectsSection = RenderComponent(sectionComponentObject);
 
-    return section;
+    return {
+        projectsSection,
+        updateProjects: () => null
+    }
 }

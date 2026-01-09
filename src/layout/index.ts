@@ -1,15 +1,43 @@
+import type { CustomOptions } from "../data/customOptions";
+import { updateAboutFn, updateProjectFn } from "../main";
+import { UIState } from "../state/UIState";
 import { GetRandomHeader } from "../utils/randomHeader";
 import { RenderComponent, type IComponent } from "../utils/RenderComponent"
 
 
 
 export function RenderLayout(root: HTMLElement, switchDisplayButton: HTMLElement): HTMLElement[]{
+    const brevityControls = RenderComponent({
+        content: `
+            <div class="brevity-controls">
+                <h2>Descriptions Length</h2>
+                <label>
+                    Qck
+                    <input type="radio" name="brevity" value="Qck" class="brevity-input"/>
+                </label>
+                <label>
+                    Normal
+                    <input type="radio" name="brevity" value="Normal" class="brevity-input"/>
+                </label>
+                <label>
+                    Very Long
+                    <input type="radio" name="brevity" value="Longer Descriptions" class="brevity-input"/>
+                </label>
+                <label>
+                    Show Me Everything Man!
+                    <input type="radio" name="brevity" value="Give Me All The Details Man!" class="brevity-input"/>
+                </label>
+            </div>
+        `
+    })
+
     const sectionsList = RenderComponent({
-        rootElement: document.createElement("aside"),
+        element: document.createElement("aside"),
         elementConnection: {
             parent: root,
             children: [
-                switchDisplayButton
+                switchDisplayButton,
+                brevityControls
             ]
         },
         className: "sections-list",
@@ -22,17 +50,27 @@ export function RenderLayout(root: HTMLElement, switchDisplayButton: HTMLElement
         `
     });
 
-    
+    const brevityInputs = brevityControls.querySelectorAll<HTMLInputElement>(".brevity-input");
+    brevityInputs.forEach(input => {
+        input.addEventListener("change", () => {
+            UIState.brevity = input.value as CustomOptions["brevity"];
+            
+            updateAboutFn(UIState.brevity);
+            updateProjectFn();
+        })
+    })
+
+
     let currentHeader = "daviswilliams.dev";
 
     const headerComponent = RenderComponent({
-        rootElement: document.createElement("header"),
+        element: document.createElement("header"),
         elementConnection: { parent: root }
     });
 
 
     let titleObject: IComponent = {
-        rootElement: document.createElement("h1"),
+        element: document.createElement("h1"),
         className: "txt-highlight-p-co",
         content: currentHeader,
         elementConnection: { parent: headerComponent }

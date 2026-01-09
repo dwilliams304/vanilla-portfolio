@@ -5,18 +5,22 @@ import { RenderComponent } from "../utils/RenderComponent";
 
 
 
-export function RenderAllSections(aboutData: AboutInfo, projectData: Project[]): HTMLElement{
+export function RenderAllSections(aboutData: AboutInfo, projectData: Project[]){
 
-    const aboutSection = RenderAboutSection(aboutData);
-    const projectsSection = RenderProjectsSection(projectData);
+    const {aboutSection, updateAbout} = RenderAboutSection(aboutData);
+    const {projectsSection, updateProjects} = RenderProjectsSection(projectData);
 
     const sections = RenderComponent({
-        rootElement: document.createElement("div"),
+        element: document.createElement("div"),
         className: "sections-container",
         elementConnection: {
             children: [aboutSection, projectsSection]
         }
     })
 
-    return sections;
+    return {
+        sections,
+        updateAboutFn: updateAbout,
+        updateProjectFn: updateProjects
+    };
 }

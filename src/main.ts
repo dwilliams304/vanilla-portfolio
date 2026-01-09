@@ -20,20 +20,28 @@ const coolModeCSSTag = "cool-mode";
 
 
 const root = document.getElementById("root")!;
+const app = RenderComponent({
+    className: "app cool-mode"
+});
+
+root.append(app);
 
 
 const switchDisplayModeButton = RenderComponent({
-    rootElement: document.createElement("button"),
+    element: document.createElement("button"),
     content: "Switch Modes",
     className: "primary-btn",
     onClick: () => UpdateApp()
 })
 
+
 const [aboutData, projectData] = FetchSiteData();
 
-const sections = RenderAllSections(aboutData, projectData);
+const {sections, updateAboutFn, updateProjectFn} = RenderAllSections(aboutData, projectData);
 
-const layout = RenderLayout(root, switchDisplayModeButton);
+export {updateAboutFn, updateProjectFn};
+
+const layout = RenderLayout(app, switchDisplayModeButton);
 
 
 const UpdateApp = (): void => {
@@ -54,6 +62,8 @@ const UpdateApp = (): void => {
     })
     
     appComponent.elementConnection?.children?.push(sections);
+    switchDisplayModeButton.textContent = isSimpleMode ? "See Cool Fancy Mode" : "See Simple Mode";
+    document.querySelector(".brevity-controls")?.classList.toggle("hidden", isSimpleMode);
     
     root.innerHTML = "";
     RenderComponent(appComponent);
