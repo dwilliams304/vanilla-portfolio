@@ -53,7 +53,7 @@ const DummyProjectData: Project[] = [
         techUsed: ["JavaScript", "Node", "Redux", "React"],
         projectDescription: {
             qck: "A 2D top-down shooter game made within the Unity engine.",
-            normal: "Normal descrtiption",
+            normal: "Basic normal description",
             long: "Long description",
             veryLong: "Very long description!"
         },
