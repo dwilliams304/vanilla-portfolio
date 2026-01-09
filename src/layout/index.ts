@@ -81,8 +81,6 @@ function CreateBrevityRadioButton(labelText: string, value: CustomOptions["brevi
 
     input.checked = UIState.brevity === value;
 
-    input.addEventListener("change", () => UIState.brevity = value);
-
     label.append(labelText, input);
     return label;
 }
