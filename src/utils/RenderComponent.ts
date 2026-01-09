@@ -1,48 +1,27 @@
+
 export interface IComponent
 {
     element?: HTMLElement
     id?: string;
     content?: string;
-    elementConnection?: { 
-        parent?: HTMLElement;
-        children?: HTMLElement[];
-        assignedUniqueChildId?: boolean;
-    }
     className?: string;
-    onRender?: () => void;
-    onClick?: () => void;
+    onClick?: (e: MouseEvent) => void;
+    onRender?: (el: HTMLElement) => void;
 }
 
 
 export function RenderComponent(component: IComponent){
     let {element} = component;
-    const {id, content, elementConnection, className, onRender, onClick} = component;
+    const {id, content, className, onRender, onClick} = component;
 
     if(!element) element = document.createElement("div");
     if(id) element.id = id;
-    if(elementConnection?.parent) elementConnection.parent.appendChild(element);
+    if(className) className.split(" ").forEach(c => element.classList.add(c));
+
     if(content) element.innerHTML = content
-    if(className) {
-        element.className = element.className ?
-        `${element.className} ${className}`
-        : className
-    }
-    if(onClick){
-        element.addEventListener("click", onClick);
-    }
 
-
-    if(elementConnection?.children){
-        elementConnection.children.forEach((child, i) => {
-            element.appendChild(child);
-            if(elementConnection.assignedUniqueChildId) child.id = i.toString();
-        })
-    }
-
-
-    if(onRender) {
-        onRender();
-    }
+    if(onClick)  element.addEventListener("click", onClick);
+    onRender?.(element);
 
     
     return element;

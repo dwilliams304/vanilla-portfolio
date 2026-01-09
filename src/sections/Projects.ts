@@ -1,5 +1,6 @@
 import type { CustomOptions } from "../data/customOptions";
 import type { Project } from "../data/siteData";
+import { mountComponent } from "../utils/mountComponent";
 import { RenderComponent, type IComponent } from "../utils/RenderComponent";
 
 const createProjectButton = (text: string, link: string | undefined): string => {
@@ -21,7 +22,7 @@ const CreateProjectCard = (project: Project, id: string) => {
         id: id,
         content: `
             <div class="project-card-left">
-                <h3 class="fancy-hover"-underline">${projectName}</h3>
+                <h3 class="fancy-hover"">${projectName}</h3>
                 <div class="tags">
                     ${techUsed?.map(tag => `<span class="tag">${tag}</span>`).join(" ")}
                 </div>
@@ -83,14 +84,10 @@ export function RenderProjectsSection(projects: Project[]){
             updateProjectCards.push(updateProject);
         })
 
-        sectionComponentObject.elementConnection = {
-            children: cards,
-            assignedUniqueChildId: true
-        }
     }
 
-
     const projectsSection = RenderComponent(sectionComponentObject);
+    mountComponent(projectsSection, ...cards);
     
 
     return {

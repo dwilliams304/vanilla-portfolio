@@ -3,3 +3,4 @@ export type CustomOptions = {
     style: "Default" | "NoStyle" | "Retro";
     brevity: "Qck" | "Normal" | "Longer Descriptions" | "Give Me All The Details Man!"
 }
+

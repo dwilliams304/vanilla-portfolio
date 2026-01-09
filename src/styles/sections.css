@@ -45,7 +45,7 @@ section
 
 
 /* Projects Section */
-#projects
+#projects, .projects
 {
     display: grid;
     /* flex-direction: column; */
@@ -90,6 +90,7 @@ section
     position: relative;
     padding-right: 4px;
     border-right: 1px solid var(--primaryColor);
+    width: 50%;
 }
 .project-card-left div
 {
@@ -111,8 +112,8 @@ section
 }
 .project-card img
 {
-    width: 225px;
-    height: 225px;
+    min-width: 200px;
+    min-height: 200px;
     object-fit: cover;
 }
 
@@ -129,6 +130,7 @@ section
     flex-wrap: wrap;
     gap: 4px 6px;
     align-items: center;
+    padding-right: 14px;
 }
 .tag
 {

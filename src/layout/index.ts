@@ -1,45 +1,27 @@
 import type { CustomOptions } from "../data/customOptions";
-import { updateAboutFn, updateProjectsFn } from "../main";
 import { UIState } from "../state/UIState";
+import { mountComponent } from "../utils/mountComponent";
 import { GetRandomHeader } from "../utils/randomHeader";
-import { RenderComponent, type IComponent } from "../utils/RenderComponent"
+import { RenderComponent } from "../utils/RenderComponent"
 
+type LayoutCallbacks = {
+    onBrevityChange: (brevity: CustomOptions["brevity"]) => void;
+}
 
-
-export function RenderLayout(root: HTMLElement, switchDisplayButton: HTMLElement): HTMLElement[]{
+export function RenderLayout(root: HTMLElement, switchDisplayButton: HTMLElement, callbacks: LayoutCallbacks): HTMLElement[]{
     const brevityControls = RenderComponent({
-        content: `
-            <div class="brevity-controls">
-                <h2>Descriptions Length</h2>
-                <label>
-                    Qck
-                    <input type="radio" name="brevity" value="Qck" class="brevity-input"/>
-                </label>
-                <label>
-                    Normal
-                    <input type="radio" name="brevity" value="Normal" class="brevity-input"/>
-                </label>
-                <label>
-                    Very Long
-                    <input type="radio" name="brevity" value="Longer Descriptions" class="brevity-input"/>
-                </label>
-                <label>
-                    Show Me Everything Man!
-                    <input type="radio" name="brevity" value="Give Me All The Details Man!" class="brevity-input"/>
-                </label>
-            </div>
-        `
+        className: "brevity-controls",
     })
+
+    mountComponent(brevityControls,
+        CreateBrevityRadioButton("Qck", "Qck"),
+        CreateBrevityRadioButton("Normal", "Normal"),
+        CreateBrevityRadioButton("Very Long", "Longer Descriptions"),
+        CreateBrevityRadioButton("Show Me Everything Man!", "Give Me All The Details Man!")
+    );
 
     const sectionsList = RenderComponent({
         element: document.createElement("aside"),
-        elementConnection: {
-            parent: root,
-            children: [
-                switchDisplayButton,
-                brevityControls
-            ]
-        },
         className: "sections-list",
         content: `
             <ul>
@@ -50,13 +32,13 @@ export function RenderLayout(root: HTMLElement, switchDisplayButton: HTMLElement
         `
     });
 
+    mountComponent(sectionsList, switchDisplayButton, brevityControls);
+
     const brevityInputs = brevityControls.querySelectorAll<HTMLInputElement>(".brevity-input");
     brevityInputs.forEach(input => {
         input.addEventListener("change", () => {
             UIState.brevity = input.value as CustomOptions["brevity"];
-            
-            updateAboutFn(UIState.brevity);
-            updateProjectsFn(UIState.brevity);
+            callbacks.onBrevityChange(UIState.brevity);
         })
     })
 
@@ -65,26 +47,42 @@ export function RenderLayout(root: HTMLElement, switchDisplayButton: HTMLElement
 
     const headerComponent = RenderComponent({
         element: document.createElement("header"),
-        elementConnection: { parent: root }
     });
 
-
-    let titleObject: IComponent = {
+    
+    const titleComponent = RenderComponent({
         element: document.createElement("h1"),
         className: "txt-highlight-p-co",
-        content: currentHeader,
-        elementConnection: { parent: headerComponent }
-    }
+        content: `${currentHeader}`
+    })
 
-    RenderComponent(titleObject);
-    
+
+    mountComponent(headerComponent, titleComponent);
+
+    mountComponent(root, headerComponent);
+
 
     headerComponent.addEventListener("click", () => {
         currentHeader = GetRandomHeader();
-        titleObject.content = `${currentHeader}.dev`;
-
-        RenderComponent(titleObject);
+        titleComponent.textContent = `${currentHeader}.dev`;
     });
 
     return [sectionsList, headerComponent]
+}
+
+
+function CreateBrevityRadioButton(labelText: string, value: CustomOptions["brevity"]): HTMLElement {
+    const label = document.createElement("label");
+    const input = document.createElement("input");
+    input.type = "radio";
+    input.name = "brevity";
+    input.value = value;
+    input.classList.add("brevity-input");
+
+    input.checked = UIState.brevity === value;
+
+    input.addEventListener("change", () => UIState.brevity = value);
+
+    label.append(labelText, input);
+    return label;
 }

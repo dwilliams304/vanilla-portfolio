@@ -8,13 +8,14 @@ import "./styles/simplemode_root.css";
 import "./styles/simplemode_layout.css";
 import "./styles/simplemode_sections.css";
 
-import { RenderComponent, type IComponent } from "./utils/RenderComponent";
+import { RenderComponent } from "./utils/RenderComponent";
 
 import { RenderAllSections } from "./sections";
 import { RenderLayout } from "./layout";
 import { FetchSiteData } from "./data/siteData";
+import { UIState } from "./state/UIState";
+import { mountComponent } from "./utils/mountComponent";
 
-let isSimpleMode = true;
 const simpleModeCSSTag = "simple-mode";
 const coolModeCSSTag = "cool-mode";
 
@@ -37,36 +38,28 @@ const switchDisplayModeButton = RenderComponent({
 
 const [aboutData, projectData] = FetchSiteData();
 
-const {sections, updateAboutFn, updateProjectsFn} = RenderAllSections(aboutData, projectData);
+const {sections, updateBrevity} = RenderAllSections(aboutData, projectData);
 
-export {updateAboutFn, updateProjectsFn};
 
-const layout = RenderLayout(app, switchDisplayModeButton);
+const layout = RenderLayout(app, switchDisplayModeButton, 
+    { 
+        onBrevityChange(brevity) { 
+            updateBrevity(brevity)
+        }
+    });
 
 
 const UpdateApp = (): void => {
-    isSimpleMode = !isSimpleMode;
+    UIState.simpleMode = !UIState.simpleMode;
     
-    const appComponent: IComponent = 
-    {
-        elementConnection: 
-        { 
-            parent: root,
-            children: []
-        },
-        className: `app ${isSimpleMode ? simpleModeCSSTag : coolModeCSSTag}`
-    }
+
+    switchDisplayModeButton.textContent = UIState.simpleMode ? "See Cool Fancy Mode" : "See Simple Mode";
     
-    layout.forEach(e => {
-        appComponent.elementConnection?.children?.push(e);
-    })
+    app.classList.toggle(simpleModeCSSTag, UIState.simpleMode);
+    app.classList.toggle(coolModeCSSTag, !UIState.simpleMode);
     
-    appComponent.elementConnection?.children?.push(sections);
-    switchDisplayModeButton.textContent = isSimpleMode ? "See Cool Fancy Mode" : "See Simple Mode";
-    document.querySelector(".brevity-controls")?.classList.toggle("hidden", isSimpleMode);
-    
-    root.innerHTML = "";
-    RenderComponent(appComponent);
+    mountComponent(app, ...layout, sections)
+    RenderComponent(app);
 }
 
 

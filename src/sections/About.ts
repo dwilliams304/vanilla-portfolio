@@ -1,6 +1,7 @@
 import { RenderComponent } from "../utils/RenderComponent";
 import type { AboutInfo } from "../data/siteData";
 import type { CustomOptions } from "../data/customOptions";
+import { mountComponent } from "../utils/mountComponent";
 
 export function RenderAboutSection(aboutData: AboutInfo) {
     const descriptionElement = document.createElement("p");
@@ -14,19 +15,16 @@ export function RenderAboutSection(aboutData: AboutInfo) {
             <h3>${aboutData.h3}</h3>
         `,
         className: "about-card-content",
-        elementConnection: { children: [descriptionElement] }
     })
+
+    mountComponent(contentElement, descriptionElement);
 
     const aboutSection = RenderComponent({
         element: document.createElement("section"),
         className: "about-card",
-        elementConnection: {
-            children: [
-                contentElement,
-                imgElement
-            ]
-        }
     });
+
+    mountComponent(aboutSection, contentElement, imgElement);
 
     descriptionElement.textContent = aboutData.description.normal;
 
