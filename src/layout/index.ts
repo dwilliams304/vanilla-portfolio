@@ -1,5 +1,3 @@
-import "./layout.css";
-
 import { GetRandomHeader } from "../utils/randomHeader";
 import { RenderComponent, type IComponent } from "../utils/RenderComponent"
 

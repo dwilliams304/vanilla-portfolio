@@ -1,5 +1,3 @@
-import "./sections.css";
-
 import { RenderAboutSection } from "./About";
 import { RenderProjectsSection } from "./Projects";
 import type { Project, AboutInfo } from "../data/siteData";

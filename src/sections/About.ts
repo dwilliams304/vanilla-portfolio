@@ -1,5 +1,5 @@
 import { RenderComponent } from "../utils/RenderComponent";
-import type { AboutInfo } from "../types";
+import type { AboutInfo } from "../data/siteData";
 
 export function RenderAboutSection(aboutData: AboutInfo): HTMLElement {
     const section = RenderComponent({

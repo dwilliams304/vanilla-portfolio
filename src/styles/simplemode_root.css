@@ -1,0 +1,57 @@
+body {
+  background-color: var(--backgroundColor);
+  color: var(--textColor)
+}
+
+textarea
+{
+  resize: none;
+  height: 100px;
+}
+
+/* HIGHLIGHT  PRIMARY COLOR, COLOR ONLY*/
+.txt-highlight-p-co {
+  color: var(--primaryColor);
+}
+/* HIGHLIGHT SECONDARY COLOR, COLOR ONLY*/
+.txt-highlight-s-co {
+  color: var(--secondaryColor);
+}
+/* HIGHLIGHT PRIMARY COLOR, COLOR W/ UNDERLINE */
+.txt-highlight-p-cul {
+  color: var(--primaryColor);
+  text-decoration: underline;
+}
+
+/* Underline grows from center to edge of text */
+.txt-underline-effect{
+  position: relative;
+}
+
+
+.simple-mode button
+{
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px solid var(--primaryColor);
+  color: var(--primaryColor);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 0.75rem 2rem;
+}
+ 
+.simple-mode .primary-btn::before
+{
+    display: none;
+
+}
+.simple-mode .primary-btn:hover::before
+{
+  transform: scaleX(100%);
+}
+.simple-mode .primary-btn:hover
+{
+  color: var(--primaryColor);
+  box-shadow: none;
+  transform: scale(1.03);
+}

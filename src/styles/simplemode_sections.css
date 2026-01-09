@@ -1,0 +1,148 @@
+.simple-mode section
+{
+    width: 65%;
+}
+
+
+
+
+.simple-mode .about-card-content
+{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.simple-mode .img-coin
+{
+    display: none;
+}
+
+
+/* Projects Section */
+.simple-mode #projects
+{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.simple-mode .project-card
+{
+    border: none;
+    transition: none;
+    min-height: 150px;
+}
+.simple-mode .project-card:hover
+{
+    cursor: default;
+    transform: none;
+    border: none;
+    box-shadow: none;
+}
+.simple-mode .project-card:hover h3
+{
+    transition: none;
+    background-image: none;
+    color: var(--primaryColor);
+    background-clip: none;
+}
+
+.simple-mode .project-card-left
+{
+    display: flex;
+    width: calc(65% - 12px);
+    gap: 14px;
+    padding-right: 12px;
+    border-right: none;
+}
+
+.simple-mode .project-card h3{
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--primaryColor);
+}
+
+.simple-mode .project-card-right
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 14px;
+}
+.simple-mode .project-card img
+{
+    display: none;
+}
+
+.simple-mode .project-card-buttons
+{
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    gap: 25px;
+    margin-top: 0.5rem;
+}
+.simple-mode .tags
+{
+    gap: 6px;
+}
+.simple-mode .tag
+{
+    border: none;
+    padding: 0;
+}
+
+.simple-mode .no-link {
+    font-size: 12px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Contact Section */
+.simple-mode #contact
+{
+    margin-bottom: 4rem;
+}
+.simple-mode form
+{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    margin: 0 auto;
+    padding: 4rem;
+    box-shadow: var(--shd_LG);
+}
+
+.simple-mode form h2
+{
+    margin-bottom: 2rem;
+    font-size: 32px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.simple-mode form button
+{
+    margin-top: 4rem;
+    /* background-color: var(--backgroundColor_Dark); */
+}
+
+
+.simple-mode .contact-item
+{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+
+.simple-mode .contact-item input, .simple-mode .contact-item textarea
+{
+    padding: 14px 22px;
+    border: 1px solid var(--primaryColor);
+    background-color: var(--backgroundColor_Dark);
+    color: var(--textColor);
+}

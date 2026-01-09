@@ -1,5 +1,12 @@
 import "./styles/reset.css";
+
 import "./styles/index.css";
+import "./styles/layout.css";
+import "./styles/sections.css";
+
+import "./styles/simplemode_root.css";
+import "./styles/simplemode_layout.css";
+import "./styles/simplemode_sections.css";
 
 import { RenderComponent, type IComponent } from "./utils/RenderComponent";
 
