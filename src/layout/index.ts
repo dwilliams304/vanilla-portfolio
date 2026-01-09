@@ -1,5 +1,5 @@
 import type { CustomOptions } from "../data/customOptions";
-import { updateAboutFn, updateProjectFn } from "../main";
+import { updateAboutFn, updateProjectsFn } from "../main";
 import { UIState } from "../state/UIState";
 import { GetRandomHeader } from "../utils/randomHeader";
 import { RenderComponent, type IComponent } from "../utils/RenderComponent"
@@ -56,7 +56,7 @@ export function RenderLayout(root: HTMLElement, switchDisplayButton: HTMLElement
             UIState.brevity = input.value as CustomOptions["brevity"];
             
             updateAboutFn(UIState.brevity);
-            updateProjectFn();
+            updateProjectsFn(UIState.brevity);
         })
     })
 

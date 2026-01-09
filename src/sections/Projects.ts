@@ -1,3 +1,4 @@
+import type { CustomOptions } from "../data/customOptions";
 import type { Project } from "../data/siteData";
 import { RenderComponent, type IComponent } from "../utils/RenderComponent";
 
@@ -12,7 +13,7 @@ const createProjectButton = (text: string, link: string | undefined): string => 
     else return ""
 }
 
-const CreateProjectCard = (project: Project, id: string): HTMLElement => {
+const CreateProjectCard = (project: Project, id: string) => {
     const {projectName, projectDescription, projectImg, techUsed} = project;
 
     const card = RenderComponent({
@@ -21,7 +22,6 @@ const CreateProjectCard = (project: Project, id: string): HTMLElement => {
         content: `
             <div class="project-card-left">
                 <h3 class="fancy-hover"-underline">${projectName}</h3>
-                <p>${projectDescription.normal}</p>
                 <div class="tags">
                     ${techUsed?.map(tag => `<span class="tag">${tag}</span>`).join(" ")}
                 </div>
@@ -36,8 +36,32 @@ const CreateProjectCard = (project: Project, id: string): HTMLElement => {
         `
     });
     
+    const descriptionElement = document.createElement("p");
+    descriptionElement.textContent = projectDescription.normal;
+
+    card.querySelector(".project-card-left")?.appendChild(descriptionElement);
     
-    return card;
+    return {
+        card,
+        updateProject(brevity: CustomOptions["brevity"]){
+            let text;
+            switch(brevity){
+                case "Qck":
+                    text = projectDescription.qck;
+                    break;
+                case "Normal":
+                    text = projectDescription.normal;
+                    break;
+                case "Longer Descriptions":
+                    text = projectDescription.long;
+                    break;
+                case "Give Me All The Details Man!":
+                    text = projectDescription.veryLong;
+                    break;
+            }
+            descriptionElement.textContent = text;
+        }
+    };
 }
 
 export function RenderProjectsSection(projects: Project[]){
@@ -48,13 +72,15 @@ export function RenderProjectsSection(projects: Project[]){
     }
 
     const cards: HTMLElement[] = [];
+    const updateProjectCards: ((brevity: CustomOptions["brevity"]) => void)[] = [];
     if(projects.length === 0){
         sectionComponentObject.content = `<h2>For some reason the projects' data couldn't be loaded. Please bother me if you see this</h2>`
     }
     else{
         projects.forEach((project, i) => {
-            const card = CreateProjectCard(project, i.toString());
+            const {card, updateProject} = CreateProjectCard(project, i.toString());
             cards.push(card);
+            updateProjectCards.push(updateProject);
         })
 
         sectionComponentObject.elementConnection = {
@@ -65,9 +91,14 @@ export function RenderProjectsSection(projects: Project[]){
 
 
     const projectsSection = RenderComponent(sectionComponentObject);
+    
 
     return {
         projectsSection,
-        updateProjects: () => null
+        updateAllProjects(brevity: CustomOptions["brevity"]){
+            updateProjectCards.forEach(update => {
+                update(brevity);
+            })
+        }
     }
 }

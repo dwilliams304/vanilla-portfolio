@@ -37,9 +37,9 @@ const switchDisplayModeButton = RenderComponent({
 
 const [aboutData, projectData] = FetchSiteData();
 
-const {sections, updateAboutFn, updateProjectFn} = RenderAllSections(aboutData, projectData);
+const {sections, updateAboutFn, updateProjectsFn} = RenderAllSections(aboutData, projectData);
 
-export {updateAboutFn, updateProjectFn};
+export {updateAboutFn, updateProjectsFn};
 
 const layout = RenderLayout(app, switchDisplayModeButton);
 

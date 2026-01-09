@@ -8,7 +8,7 @@ import { RenderComponent } from "../utils/RenderComponent";
 export function RenderAllSections(aboutData: AboutInfo, projectData: Project[]){
 
     const {aboutSection, updateAbout} = RenderAboutSection(aboutData);
-    const {projectsSection, updateProjects} = RenderProjectsSection(projectData);
+    const {projectsSection, updateAllProjects} = RenderProjectsSection(projectData);
 
     const sections = RenderComponent({
         element: document.createElement("div"),
@@ -21,6 +21,6 @@ export function RenderAllSections(aboutData: AboutInfo, projectData: Project[]){
     return {
         sections,
         updateAboutFn: updateAbout,
-        updateProjectFn: updateProjects
+        updateProjectsFn: updateAllProjects
     };
 }
