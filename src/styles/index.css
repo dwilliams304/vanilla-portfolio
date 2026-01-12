@@ -35,7 +35,11 @@
 
 body {
   background-color: var(--backgroundColor);
-  color: var(--textColor)
+  /* color: var(--textColor) */
+}
+
+p, h2, h1, h3 {
+  color: var(--textColor);
 }
 
 textarea
@@ -129,7 +133,8 @@ button
   padding: 1.5rem calc(2.8rem - 4px);
   background-color: rgba(0, 0, 0, .6);
   backdrop-filter: blur(25px);
-  border: 2px solid var(--primaryColor);
+  border: 2px solid;
+  border-color: var(--primaryColor);
   border-radius: 34px;
 
   display: flex;

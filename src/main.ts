@@ -17,6 +17,7 @@ import { UIState } from "./state/UIState";
 import { mountComponent } from "./utils/mountComponent";
 import { OpenBarButton, RenderCustomizationBar } from "./layout/CustomizationBar";
 import { ApplySimpleMode } from "./utils/ApplySimpleMode";
+import { ApplyPrimaryColor, ApplyTextColor } from "./utils/ApplyColors";
 
 
 const root = document.getElementById("root")!;
@@ -45,7 +46,18 @@ const customizationBar = RenderCustomizationBar({
     onSimpleModeChange(simpleMode) {
         UIState.simpleMode = simpleMode;
         ApplySimpleMode(app);
-    }
+    },
+
+    onPrimaryColorChange(color) {
+        UIState.primaryColor = color;
+        ApplyPrimaryColor(app, color);
+    },
+    
+    onTextColorChange(color) {
+        UIState.primaryColor = color;
+        ApplyTextColor(app, color);
+    },
+
 });
 
 
@@ -55,3 +67,5 @@ const openBarButton = OpenBarButton(customizationBar);
 mountComponent(app, ...layout, sections);
 mountComponent(root, customizationBar, openBarButton);
 ApplySimpleMode(app);
+ApplyPrimaryColor(app, UIState.primaryColor);
+ApplyTextColor(app, UIState.textColor);

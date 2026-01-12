@@ -8,9 +8,11 @@ type CustomizationCallbacks = {
     onBrevityChange: (brevity: CustomOptions["brevity"]) => void;
     onStyleChange: (style: CustomOptions["style"]) => void;
     onSimpleModeChange: (simpleMode: boolean) => void;
+    onPrimaryColorChange: (color: string) => void;
+    onTextColorChange: (color: string) => void;
 }
 
-export function OpenBarButton(bar: HTMLElement): HTMLElement{
+export function OpenBarButton(bar: HTMLElement): HTMLElement {
     const openButton = document.createElement("button");
     openButton.classList.add("open-button");
     openButton.textContent = "Customize!";
@@ -18,7 +20,7 @@ export function OpenBarButton(bar: HTMLElement): HTMLElement{
     openButton.addEventListener("click", () => {
         bar.classList.toggle("is-closed");
     })
-    
+
     return openButton;
 }
 
@@ -66,11 +68,19 @@ export function RenderCustomizationBar(callbacks: CustomizationCallbacks): HTMLE
         }
     })
 
-    if(optionsContainer){
+    if (optionsContainer) {
         mountComponent(
-            optionsContainer, 
-            brevitySelect, 
-            styleSelect, 
+            optionsContainer,
+            brevitySelect,
+            styleSelect,
+            CreatePrimaryColorPicker((color) => {
+                UIState.primaryColor = color;
+                callbacks.onPrimaryColorChange(color);
+            }),
+            CreateTextColorPicker((color) => {
+                UIState.textColor = color;
+                callbacks.onTextColorChange(color);
+            }),
             CreateSimpleModeToggle(callbacks),
             CreateCloseButton(bar)
         );
@@ -79,7 +89,7 @@ export function RenderCustomizationBar(callbacks: CustomizationCallbacks): HTMLE
     return bar;
 }
 
-function CreateSimpleModeToggle( callbacks: CustomizationCallbacks ): HTMLElement {
+function CreateSimpleModeToggle(callbacks: CustomizationCallbacks): HTMLElement {
     const label = document.createElement("label");
     label.textContent = "Simple Mode";
 
@@ -96,14 +106,51 @@ function CreateSimpleModeToggle( callbacks: CustomizationCallbacks ): HTMLElemen
     return label;
 }
 
-function CreateCloseButton(bar: HTMLElement): HTMLElement{
+function CreateCloseButton(bar: HTMLElement): HTMLElement {
     const button = document.createElement("button");
     button.textContent = "X";
     button.classList.add("close-button")
-    
+
     button.addEventListener("click", () => {
         bar.classList.add("is-closed");
     });
 
     return button;
+}
+
+function CreatePrimaryColorPicker(
+    onChange: (color: string) => void
+): HTMLElement {
+
+    const label = document.createElement("label");
+    label.textContent = "Primary Color";
+
+    const input = document.createElement("input");
+    input.type = "color";
+    input.value = UIState.primaryColor;
+
+    input.addEventListener("input", () => {
+        onChange(input.value);
+    });
+
+    label.appendChild(input);
+    return label;
+}
+function CreateTextColorPicker(
+    onChange: (color: string) => void
+): HTMLElement {
+
+    const label = document.createElement("label");
+    label.textContent = "Text Color";
+
+    const input = document.createElement("input");
+    input.type = "color";
+    input.value = UIState.textColor;
+
+    input.addEventListener("input", () => {
+        onChange(input.value);
+    });
+
+    label.appendChild(input);
+    return label;
 }
