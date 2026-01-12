@@ -14,10 +14,10 @@ export type Project = {
 }
 
 export type ModifiableDescription = {
-    qck: string;
+    short: string;
     normal: string;
-    long: string;
-    veryLong: string;
+    longer: string;
+    everything: string;
 
 }
 
@@ -26,10 +26,10 @@ const aboutData: AboutInfo = {
     h2: "My name is <span class='txt-highlight-p-cul'>Davis</span>.",
     h3: "A <span class='txt-highlight-s-co'>Software Engineer</span> based out of South Carolina",
     description: {
-        qck: "Welcome to my portfolio! Here you can view some information about me, as well as information about some of the projects I've worked on.",
+        short: "Welcome to my portfolio! Here you can view some information about me, as well as information about some of the projects I've worked on.",
         normal: "Normal descrtiption",
-        long: "Long description",
-        veryLong: "Very long description!"
+        longer: "Long description",
+        everything: "Very long description!"
     },
     img: "https://daviswilliams-portfolio.vercel.app/assets/coin-Q8Ml-U-z.jpg"
 }
@@ -40,10 +40,10 @@ const DummyProjectData: Project[] = [
         projectImg: "https://bwsrltsxndfbxnthgmlt.supabase.co/storage/v1/object/sign/Personal%20Projects/NeonRainGameplay.PNG?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV80MGIxMDcyMS1jZjI2LTQxZWMtOTZkNy1lYzdkYmUwNGNhNjUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQZXJzb25hbCBQcm9qZWN0cy9OZW9uUmFpbkdhbWVwbGF5LlBORyIsImlhdCI6MTc2NjA1MDQ1OCwiZXhwIjo0ODg4MTE0NDU4fQ.Tw9zP1nXUzbBJI2sR57PXL-ych9zt825gRaEjylMsV4",
         techUsed: ["Unity", "C#"],
         projectDescription: {
-            qck: "A 2D top-down shooter game made within the Unity engine.",
+            short: "A 2D top-down shooter game made within the Unity engine.",
             normal: "Normal descrtiption",
-            long: "Long description",
-            veryLong: "Very long description!"
+            longer: "Long description",
+            everything: "Very long description!"
         },
         links: ["https://github.com", "https://github.com"]
     },
@@ -52,10 +52,10 @@ const DummyProjectData: Project[] = [
         projectImg: "https://bwsrltsxndfbxnthgmlt.supabase.co/storage/v1/object/sign/Personal%20Projects/HRF-Banner2.PNG?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV80MGIxMDcyMS1jZjI2LTQxZWMtOTZkNy1lYzdkYmUwNGNhNjUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQZXJzb25hbCBQcm9qZWN0cy9IUkYtQmFubmVyMi5QTkciLCJpYXQiOjE3NjYwNTA0OTYsImV4cCI6MTkyMzczMDQ5Nn0.dQLo5dTviyxZ9ciHuI2zgisVhhUqXHz3-AVcHONyNss",
         techUsed: ["JavaScript", "Node", "Redux", "React"],
         projectDescription: {
-            qck: "A 2D top-down shooter game made within the Unity engine.",
+            short: "A 2D top-down shooter game made within the Unity engine.",
             normal: "Basic normal description",
-            long: "Long description",
-            veryLong: "Very long description!"
+            longer: "Long description",
+            everything: "Very long description!"
         },
         links: ["https://github.com", "https://github.com"]
     },
@@ -64,10 +64,10 @@ const DummyProjectData: Project[] = [
         projectImg: "https://bwsrltsxndfbxnthgmlt.supabase.co/storage/v1/object/sign/Personal%20Projects/ts-job-board.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV80MGIxMDcyMS1jZjI2LTQxZWMtOTZkNy1lYzdkYmUwNGNhNjUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQZXJzb25hbCBQcm9qZWN0cy90cy1qb2ItYm9hcmQucG5nIiwiaWF0IjoxNzYyMDQ5MDY3LCJleHAiOjE3OTM1ODUwNjd9.BykxLFkR3SN3CT0IGXZZZEnAwBQJ8l88mbLFJdbpgE0",
         techUsed: ["TypeScript", "Node", "React", ".NET", "C#", "TailwindCSS"],
         projectDescription: {
-            qck: "A 2D top-down shooter game made within the Unity engine.",
+            short: "A 2D top-down shooter game made within the Unity engine.",
             normal: "Normal descrtiption",
-            long: "Long description",
-            veryLong: "Very long description!"
+            longer: "Long description",
+            everything: "Very long description!"
         },
         links: ["https://github.com", ""]
     },
@@ -76,10 +76,10 @@ const DummyProjectData: Project[] = [
         projectImg: "https://bwsrltsxndfbxnthgmlt.supabase.co/storage/v1/object/sign/Personal%20Projects/ts-job-board.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV80MGIxMDcyMS1jZjI2LTQxZWMtOTZkNy1lYzdkYmUwNGNhNjUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQZXJzb25hbCBQcm9qZWN0cy90cy1qb2ItYm9hcmQucG5nIiwiaWF0IjoxNzYyMDQ5MDY3LCJleHAiOjE3OTM1ODUwNjd9.BykxLFkR3SN3CT0IGXZZZEnAwBQJ8l88mbLFJdbpgE0",
         techUsed: ["TypeScript", "Node", "React", "CSS"],
         projectDescription: {
-            qck: "A 2D top-down shooter game made within the Unity engine.",
+            short: "A 2D top-down shooter game made within the Unity engine.",
             normal: "Normal descrtiption",
-            long: "Long description",
-            veryLong: "Very long description!"
+            longer: "Long description",
+            everything: "Very long description!"
         },
         links: ["https://www.contradictivegames.com/", ""]
     },
@@ -88,10 +88,10 @@ const DummyProjectData: Project[] = [
         projectImg: "https://bwsrltsxndfbxnthgmlt.supabase.co/storage/v1/object/sign/Personal%20Projects/ts-job-board.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV80MGIxMDcyMS1jZjI2LTQxZWMtOTZkNy1lYzdkYmUwNGNhNjUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQZXJzb25hbCBQcm9qZWN0cy90cy1qb2ItYm9hcmQucG5nIiwiaWF0IjoxNzYyMDQ5MDY3LCJleHAiOjE3OTM1ODUwNjd9.BykxLFkR3SN3CT0IGXZZZEnAwBQJ8l88mbLFJdbpgE0",
         techUsed: ["Unity", "C#"],
         projectDescription: {
-            qck: "A 2D top-down shooter game made within the Unity engine.",
+            short: "A 2D top-down shooter game made within the Unity engine.",
             normal: "Normal descrtiption",
-            long: "Long description",
-            veryLong: "Very long description!"
+            longer: "Long description",
+            everything: "Very long description!"
         },
         links: ["", "https://github.com/Contradictive-Games/RGS-CGConsole"]
     },

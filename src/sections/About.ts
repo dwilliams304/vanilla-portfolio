@@ -33,17 +33,17 @@ export function RenderAboutSection(aboutData: AboutInfo) {
         updateAbout(brevity: CustomOptions["brevity"]) {
             let text;
             switch(brevity){
-                case "Qck": 
-                    text = aboutData.description.qck
+                case "Short": 
+                    text = aboutData.description.short
                     break;
                 case "Normal": 
                     text = aboutData.description.normal
                     break;
-                case "Longer Descriptions":
-                    text = aboutData.description.long;
+                case "Longer":
+                    text = aboutData.description.longer;
                     break;
-                    case "Give Me All The Details Man!":
-                    text = aboutData.description.veryLong;
+                case "Everything":
+                    text = aboutData.description.everything;
                     break;
                 default:
                     text = aboutData.description.normal;

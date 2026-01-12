@@ -47,17 +47,17 @@ const CreateProjectCard = (project: Project, id: string) => {
         updateProject(brevity: CustomOptions["brevity"]){
             let text;
             switch(brevity){
-                case "Qck":
-                    text = projectDescription.qck;
+                case "Short":
+                    text = projectDescription.short;
                     break;
                 case "Normal":
                     text = projectDescription.normal;
                     break;
-                case "Longer Descriptions":
-                    text = projectDescription.long;
+                case "Longer":
+                    text = projectDescription.longer;
                     break;
-                case "Give Me All The Details Man!":
-                    text = projectDescription.veryLong;
+                case "Everything":
+                    text = projectDescription.everything;
                     break;
             }
             descriptionElement.textContent = text;

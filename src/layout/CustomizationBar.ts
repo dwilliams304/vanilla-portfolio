@@ -29,10 +29,10 @@ export function RenderCustomizationBar(callbacks: CustomizationCallbacks): HTMLE
         id: "brevity",
         value: UIState.brevity,
         options: [
-            { value: "Qck", label: "Qck" },
+            { value: "Short", label: "Qck" },
             { value: "Normal", label: "Normal" },
-            { value: "Longer Descriptions", label: "Long" },
-            { value: "Give Me All The Details Man!", label: "Everything" },
+            { value: "Longer", label: "Longer Descriptions" },
+            { value: "Everything", label: "Give Me All The Details Man!" },
         ],
         onChange: (brevity) => {
             UIState.brevity = brevity;
@@ -67,7 +67,7 @@ export function RenderCustomizationBar(callbacks: CustomizationCallbacks): HTMLE
 function CreateSimpleModeToggle( callbacks: CustomizationCallbacks ): HTMLElement {
     const label = document.createElement("label");
     label.textContent = "Simple Mode";
-    
+
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.checked = UIState.simpleMode;
