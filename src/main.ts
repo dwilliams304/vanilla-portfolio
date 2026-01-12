@@ -52,7 +52,15 @@ const layout = RenderLayout(
     }
 );
 
-const customizationBar = RenderCustomizationBar();
+const customizationBar = RenderCustomizationBar({
+    onBrevityChange(brevity) { updateBrevity(brevity); },
+    onStyleChange(style) { console.log(style); },
+    onSimpleModeChange(simpleMode) {
+        UIState.simpleMode = simpleMode;
+        app.classList.toggle(simpleModeCSSTag, simpleMode);
+        app.classList.toggle(coolModeCSSTag, !simpleMode);
+    }
+});
 mountComponent(root, customizationBar);
 
 
