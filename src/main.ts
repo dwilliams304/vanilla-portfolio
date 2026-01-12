@@ -15,6 +15,7 @@ import { RenderLayout } from "./layout";
 import { FetchSiteData } from "./data/siteData";
 import { UIState } from "./state/UIState";
 import { mountComponent } from "./utils/mountComponent";
+import { RenderCustomizationBar } from "./layout/CustomizationBar";
 
 const simpleModeCSSTag = "simple-mode";
 const coolModeCSSTag = "cool-mode";
@@ -41,12 +42,18 @@ const [aboutData, projectData] = FetchSiteData();
 const {sections, updateBrevity} = RenderAllSections(aboutData, projectData);
 
 
-const layout = RenderLayout(app, switchDisplayModeButton, 
+const layout = RenderLayout(
+    app, 
+    switchDisplayModeButton, 
     { 
         onBrevityChange(brevity) { 
             updateBrevity(brevity)
         }
-    });
+    }
+);
+
+const customizationBar = RenderCustomizationBar();
+mountComponent(root, customizationBar);
 
 
 const UpdateApp = (): void => {

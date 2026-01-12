@@ -119,3 +119,48 @@ button
   color: var(--primaryColor);
   background-color: var(--backgroundColor_Dark);
 }
+
+
+.customization-bar {
+  position: fixed;
+  top: 2rem;
+  width: 60%;
+  left: 20%;
+  padding: 1.5rem calc(2.8rem - 4px);
+  background-color: rgba(0, 0, 0, .6);
+  backdrop-filter: blur(25px);
+  border: 2px solid var(--primaryColor);
+  border-radius: 34px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+
+  transition: all 200ms ease-in-out;
+}
+.customization-bar:hover {
+  background-color: rgba(0, 0, 0, .8);
+}
+
+.customization-bar h2 {
+  font-size: 34px;
+  font-weight: 600;
+}
+
+.custom-options {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.custom-options select { 
+  padding: .5rem 1.5rem;
+  background-color: var(--backgroundColor_Dark);
+  color: var(--primaryColor);
+  border: 2px solid var(--primaryColor);
+  border-radius: 12px;
+}
