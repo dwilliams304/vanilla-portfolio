@@ -58,9 +58,25 @@ export function RenderCustomizationBar(callbacks: CustomizationCallbacks): HTMLE
     })
 
     if(optionsContainer){
-        mountComponent(optionsContainer, brevitySelect, styleSelect);
+        mountComponent(optionsContainer, brevitySelect, styleSelect, CreateSimpleModeToggle(callbacks));
     }
 
     return bar;
 }
 
+function CreateSimpleModeToggle( callbacks: CustomizationCallbacks ): HTMLElement {
+    const label = document.createElement("label");
+    label.textContent = "Simple Mode";
+    
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.checked = UIState.simpleMode;
+
+    checkbox.addEventListener("change", () => {
+        UIState.simpleMode = checkbox.checked;
+        callbacks.onSimpleModeChange(checkbox.checked);
+    })
+
+    label.prepend(checkbox);
+    return label;
+}

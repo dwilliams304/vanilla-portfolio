@@ -1,24 +1,13 @@
-import type { CustomOptions } from "../data/customOptions";
-import { UIState } from "../state/UIState";
 import { mountComponent } from "../utils/mountComponent";
 import { GetRandomHeader } from "../utils/randomHeader";
 import { RenderComponent } from "../utils/RenderComponent"
 
-type LayoutCallbacks = {
-    onBrevityChange: (brevity: CustomOptions["brevity"]) => void;
-}
 
-export function RenderLayout(root: HTMLElement, switchDisplayButton: HTMLElement, callbacks: LayoutCallbacks): HTMLElement[]{
+export function RenderLayout(root: HTMLElement): HTMLElement[]{
     const brevityControls = RenderComponent({
         className: "brevity-controls",
     })
 
-    mountComponent(brevityControls,
-        CreateBrevityRadioButton("Qck", "Qck"),
-        CreateBrevityRadioButton("Normal", "Normal"),
-        CreateBrevityRadioButton("Very Long", "Longer Descriptions"),
-        CreateBrevityRadioButton("Show Me Everything Man!", "Give Me All The Details Man!")
-    );
 
     const sectionsList = RenderComponent({
         element: document.createElement("aside"),
@@ -32,15 +21,8 @@ export function RenderLayout(root: HTMLElement, switchDisplayButton: HTMLElement
         `
     });
 
-    mountComponent(sectionsList, switchDisplayButton, brevityControls);
+    mountComponent(sectionsList, brevityControls);
 
-    const brevityInputs = brevityControls.querySelectorAll<HTMLInputElement>(".brevity-input");
-    brevityInputs.forEach(input => {
-        input.addEventListener("change", () => {
-            UIState.brevity = input.value as CustomOptions["brevity"];
-            callbacks.onBrevityChange(UIState.brevity);
-        })
-    })
 
 
     let currentHeader = "daviswilliams.dev";
@@ -68,19 +50,4 @@ export function RenderLayout(root: HTMLElement, switchDisplayButton: HTMLElement
     });
 
     return [sectionsList, headerComponent]
-}
-
-
-function CreateBrevityRadioButton(labelText: string, value: CustomOptions["brevity"]): HTMLElement {
-    const label = document.createElement("label");
-    const input = document.createElement("input");
-    input.type = "radio";
-    input.name = "brevity";
-    input.value = value;
-    input.classList.add("brevity-input");
-
-    input.checked = UIState.brevity === value;
-
-    label.append(labelText, input);
-    return label;
 }

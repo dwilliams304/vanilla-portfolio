@@ -23,7 +23,7 @@ const coolModeCSSTag = "cool-mode";
 
 const root = document.getElementById("root")!;
 const app = RenderComponent({
-    className: "app cool-mode"
+    className: `app`
 });
 
 root.append(app);
@@ -42,39 +42,38 @@ const [aboutData, projectData] = FetchSiteData();
 const {sections, updateBrevity} = RenderAllSections(aboutData, projectData);
 
 
-const layout = RenderLayout(
-    app, 
-    switchDisplayModeButton, 
-    { 
-        onBrevityChange(brevity) { 
-            updateBrevity(brevity)
-        }
-    }
-);
+const layout = RenderLayout(app);
 
 const customizationBar = RenderCustomizationBar({
-    onBrevityChange(brevity) { updateBrevity(brevity); },
-    onStyleChange(style) { console.log(style); },
+    onBrevityChange(brevity) { 
+        updateBrevity(brevity); 
+    },
+    
+    onStyleChange(style) { 
+        console.log(style); 
+    },
+    
     onSimpleModeChange(simpleMode) {
         UIState.simpleMode = simpleMode;
-        app.classList.toggle(simpleModeCSSTag, simpleMode);
-        app.classList.toggle(coolModeCSSTag, !simpleMode);
+        ApplySimpleMode();
     }
 });
+
 mountComponent(root, customizationBar);
 
 
 const UpdateApp = (): void => {
-    UIState.simpleMode = !UIState.simpleMode;
-    
-
     switchDisplayModeButton.textContent = UIState.simpleMode ? "See Cool Fancy Mode" : "See Simple Mode";
     
-    app.classList.toggle(simpleModeCSSTag, UIState.simpleMode);
-    app.classList.toggle(coolModeCSSTag, !UIState.simpleMode);
+    ApplySimpleMode();
     
     mountComponent(app, ...layout, sections)
     RenderComponent(app);
+}
+
+function ApplySimpleMode(){
+    app.classList.toggle(simpleModeCSSTag, UIState.simpleMode);
+    app.classList.toggle(coolModeCSSTag, !UIState.simpleMode);
 }
 
 
