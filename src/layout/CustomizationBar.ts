@@ -10,11 +10,21 @@ type CustomizationCallbacks = {
     onSimpleModeChange: (simpleMode: boolean) => void;
 }
 
+export function OpenBarButton(bar: HTMLElement): HTMLElement{
+    const openButton = document.createElement("button");
+    openButton.classList.add("open-button");
+    openButton.textContent = "Customize!";
+
+    openButton.addEventListener("click", () => {
+        bar.classList.toggle("is-closed");
+    })
+    
+    return openButton;
+}
 
 export function RenderCustomizationBar(callbacks: CustomizationCallbacks): HTMLElement {
-
     const bar = RenderComponent({
-        className: "customization-bar",
+        className: "customization-bar is-closed",
         content: `
             <h2>Customization</h2>
             <div class="custom-options"></div>
@@ -40,7 +50,6 @@ export function RenderCustomizationBar(callbacks: CustomizationCallbacks): HTMLE
         }
     });
 
-
     const styleSelect = CreateSelectElement<CustomOptions["style"]>({
         className: "style-select",
         name: "style",
@@ -58,7 +67,13 @@ export function RenderCustomizationBar(callbacks: CustomizationCallbacks): HTMLE
     })
 
     if(optionsContainer){
-        mountComponent(optionsContainer, brevitySelect, styleSelect, CreateSimpleModeToggle(callbacks));
+        mountComponent(
+            optionsContainer, 
+            brevitySelect, 
+            styleSelect, 
+            CreateSimpleModeToggle(callbacks),
+            CreateCloseButton(bar)
+        );
     }
 
     return bar;
@@ -79,4 +94,16 @@ function CreateSimpleModeToggle( callbacks: CustomizationCallbacks ): HTMLElemen
 
     label.prepend(checkbox);
     return label;
+}
+
+function CreateCloseButton(bar: HTMLElement): HTMLElement{
+    const button = document.createElement("button");
+    button.textContent = "X";
+    button.classList.add("close-button")
+    
+    button.addEventListener("click", () => {
+        bar.classList.add("is-closed");
+    });
+
+    return button;
 }

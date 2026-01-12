@@ -15,7 +15,7 @@ import { RenderLayout } from "./layout";
 import { FetchSiteData } from "./data/siteData";
 import { UIState } from "./state/UIState";
 import { mountComponent } from "./utils/mountComponent";
-import { RenderCustomizationBar } from "./layout/CustomizationBar";
+import { OpenBarButton, RenderCustomizationBar } from "./layout/CustomizationBar";
 import { ApplySimpleMode } from "./utils/ApplySimpleMode";
 
 
@@ -49,9 +49,9 @@ const customizationBar = RenderCustomizationBar({
 });
 
 
-
+const openBarButton = OpenBarButton(customizationBar);
 
 
 mountComponent(app, ...layout, sections);
-mountComponent(root, customizationBar);
+mountComponent(root, customizationBar, openBarButton);
 ApplySimpleMode(app);

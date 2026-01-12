@@ -138,8 +138,21 @@ button
   justify-content: center;
   gap: 3rem;
 
-  transition: all 200ms ease-in-out;
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+
+  transition: 
+    transform 300ms ease,
+    opacity 200ms ease,
+    background-color 200ms ease;
 }
+.customization-bar.is-closed {
+  transform: translateY(-1.5rem);
+  opacity: 0;
+  pointer-events: none;
+}
+
 .customization-bar:hover {
   background-color: rgba(0, 0, 0, .8);
 }
@@ -163,4 +176,32 @@ button
   color: var(--primaryColor);
   border: 2px solid var(--primaryColor);
   border-radius: 12px;
+}
+
+.open-button {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.75rem 1.5rem;
+  z-index: 1000;
+
+  transition: all 200ms ease;
+}
+.open-button:hover {
+  color: var(--textColor);
+  border-color: var(--textColor);
+}
+
+.close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.5rem;
+
+  transition: all 200ms ease;
+}
+
+.close-button:hover {
+  color: var(--textColor);
+  border-color: var(--textColor);
 }
