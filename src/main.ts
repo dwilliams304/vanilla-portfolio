@@ -23,6 +23,7 @@ import { mountComponent,
     ApplyTextColor, 
     ApplyColor} from "./utils";
 import type { CustomOptions } from "./data/customOptions";
+import { primaryColorProperty, textColorProperty } from "./utils/constants";
 
 
 
@@ -55,12 +56,12 @@ const customizationCallbacks = {
 
     onPrimaryColorChange(color: string) {
         UIState.colors.primaryColor = color;
-        ApplyColor(app, "--primaryColor", color);
+        ApplyColor(app, primaryColorProperty, color);
     },
     
     onTextColorChange(color: string) {
         UIState.colors.primaryColor = color;
-        ApplyColor(app, "--textColor", color);
+        ApplyColor(app, textColorProperty, color);
     },
 }
 

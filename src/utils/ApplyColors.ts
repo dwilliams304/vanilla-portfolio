@@ -1,13 +1,19 @@
+import { backgroundColorProperty, primaryColorProperty, secondaryColorProperty, textColorProperty } from "./constants";
+
 function ApplyPrimaryColor(app: HTMLElement, color: string) {
-    app.style.setProperty("--primaryColor", color);
+    app.style.setProperty(primaryColorProperty, color);
+}
+
+function ApplySecondaryColor(app: HTMLElement, color: string) {
+    app.style.setProperty(secondaryColorProperty, color);
 }
 
 function ApplyTextColor(app: HTMLElement, color: string){
-    app.style.setProperty("--textColor", color);
+    app.style.setProperty(textColorProperty, color);
 }
 
 function ApplyBackgroundColor(app: HTMLElement, color: string){
-    app.style.setProperty("--backgroundColor", color);
+    app.style.setProperty(backgroundColorProperty, color);
 }
 
 function ApplyColor(app: HTMLElement, propertyName: string, color: string){
@@ -17,6 +23,7 @@ function ApplyColor(app: HTMLElement, propertyName: string, color: string){
 
 export {
     ApplyPrimaryColor,
+    ApplySecondaryColor,
     ApplyTextColor,
     ApplyBackgroundColor,
     ApplyColor

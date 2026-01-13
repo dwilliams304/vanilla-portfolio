@@ -1,7 +1,5 @@
 import { UIState } from "../state/UIState";
-
-const simpleModeCSSTag = "simple-mode";
-const coolModeCSSTag = "cool-mode";
+import { simpleModeCSSTag, coolModeCSSTag } from "./constants";
 
 function ApplySimpleMode(app: HTMLElement){
     app.classList.toggle(simpleModeCSSTag, UIState.simpleMode);
