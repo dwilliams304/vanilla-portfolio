@@ -1,4 +1,4 @@
-import { RenderComponent } from "../utils/RenderComponent";
+import { CreateComponent } from "../element-creators/CreateComponent";
 import type { AboutInfo } from "../data/siteData";
 import type { CustomOptions } from "../data/customOptions";
 import { mountComponent } from "../utils/mountComponent";
@@ -9,7 +9,7 @@ export function RenderAboutSection(aboutData: AboutInfo) {
     imgElement.src = aboutData.img;
     imgElement.classList.add("img-coin");
 
-    const contentElement = RenderComponent({
+    const contentElement = CreateComponent({
         content: `
             <h2>${aboutData.h2}</h2>
             <h3>${aboutData.h3}</h3>
@@ -19,7 +19,7 @@ export function RenderAboutSection(aboutData: AboutInfo) {
 
     mountComponent(contentElement, descriptionElement);
 
-    const aboutSection = RenderComponent({
+    const aboutSection = CreateComponent({
         element: document.createElement("section"),
         className: "about-card",
     });

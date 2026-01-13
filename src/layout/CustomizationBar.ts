@@ -1,9 +1,9 @@
 import type { CustomOptions } from "../data/customOptions";
 import { UIState } from "../state/UIState";
-import { CreateColorPicker } from "../utils/CreateColorPicker";
-import { CreateSelectElement } from "../utils/CreateSelectElement";
+import { CreateColorPicker } from "../element-creators/CreateColorPicker";
+import { CreateSelectElement } from "../element-creators/CreateSelectElement";
 import { mountComponent } from "../utils/mountComponent";
-import { RenderComponent } from "../utils/RenderComponent"
+import { CreateComponent } from "../element-creators/CreateComponent"
 
 type CustomizationCallbacks = {
     onBrevityChange: (brevity: CustomOptions["brevity"]) => void;
@@ -26,7 +26,7 @@ export function OpenBarButton(bar: HTMLElement): HTMLElement {
 }
 
 export function RenderCustomizationBar(callbacks: CustomizationCallbacks): HTMLElement {
-    const bar = RenderComponent({
+    const bar = CreateComponent({
         className: "customization-bar is-closed",
         content: `
             <h2>Customization</h2>

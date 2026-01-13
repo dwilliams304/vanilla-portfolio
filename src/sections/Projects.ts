@@ -1,7 +1,7 @@
 import type { CustomOptions } from "../data/customOptions";
 import type { Project } from "../data/siteData";
 import { mountComponent } from "../utils/mountComponent";
-import { RenderComponent, type IComponent } from "../utils/RenderComponent";
+import { CreateComponent, type IComponent } from "../element-creators/CreateComponent";
 
 const createProjectButton = (text: string, link: string | undefined): string => {
     if(link) {
@@ -17,7 +17,7 @@ const createProjectButton = (text: string, link: string | undefined): string => 
 const CreateProjectCard = (project: Project, id: string) => {
     const {projectName, projectDescription, projectImg, techUsed} = project;
 
-    const card = RenderComponent({
+    const card = CreateComponent({
         className: "project-card",
         id: id,
         content: `
@@ -86,7 +86,7 @@ export function RenderProjectsSection(projects: Project[]){
 
     }
 
-    const projectsSection = RenderComponent(sectionComponentObject);
+    const projectsSection = CreateComponent(sectionComponentObject);
     mountComponent(projectsSection, ...cards);
     
 

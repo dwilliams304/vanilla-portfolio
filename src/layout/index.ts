@@ -1,15 +1,15 @@
 import { mountComponent } from "../utils/mountComponent";
 import { GetRandomHeader } from "../utils/randomHeader";
-import { RenderComponent } from "../utils/RenderComponent"
+import { CreateComponent } from "../element-creators/CreateComponent"
 
 
 export function RenderLayout(root: HTMLElement): HTMLElement[]{
-    const brevityControls = RenderComponent({
+    const brevityControls = CreateComponent({
         className: "brevity-controls",
     })
 
 
-    const sectionsList = RenderComponent({
+    const sectionsList = CreateComponent({
         element: document.createElement("aside"),
         className: "sections-list",
         content: `
@@ -27,12 +27,12 @@ export function RenderLayout(root: HTMLElement): HTMLElement[]{
 
     let currentHeader = "daviswilliams.dev";
 
-    const headerComponent = RenderComponent({
+    const headerComponent = CreateComponent({
         element: document.createElement("header"),
     });
 
     
-    const titleComponent = RenderComponent({
+    const titleComponent = CreateComponent({
         element: document.createElement("h1"),
         className: "txt-highlight-p-co",
         content: `${currentHeader}`

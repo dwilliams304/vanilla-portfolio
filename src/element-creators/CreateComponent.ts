@@ -10,7 +10,7 @@ export interface IComponent
 }
 
 
-export function RenderComponent(component: IComponent){
+export function CreateComponent(component: IComponent){
     let {element} = component;
     const {id, content, className, onRender, onClick} = component;
 

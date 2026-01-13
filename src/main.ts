@@ -8,7 +8,7 @@ import "./styles/simplemode_root.css";
 import "./styles/simplemode_layout.css";
 import "./styles/simplemode_sections.css";
 
-import { RenderComponent } from "./utils/RenderComponent";
+import { CreateComponent } from "./element-creators/CreateComponent";
 
 import { RenderAllSections } from "./sections";
 import { RenderLayout } from "./layout";
@@ -21,7 +21,7 @@ import { ApplyPrimaryColor, ApplyTextColor } from "./utils/ApplyColors";
 
 
 const root = document.getElementById("root")!;
-const app = RenderComponent({ className: `app` });
+const app = CreateComponent({ className: `app` });
 
 mountComponent(root, app);
 

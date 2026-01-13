@@ -1,7 +1,7 @@
 import { RenderAboutSection } from "./About";
 import { RenderProjectsSection } from "./Projects";
 import type { Project, AboutInfo } from "../data/siteData";
-import { RenderComponent } from "../utils/RenderComponent";
+import { CreateComponent } from "../element-creators/CreateComponent";
 import type { CustomOptions } from "../data/customOptions";
 import { mountComponent } from "../utils/mountComponent";
 
@@ -12,7 +12,7 @@ export function RenderAllSections(aboutData: AboutInfo, projectData: Project[]){
     const {aboutSection, updateAbout} = RenderAboutSection(aboutData);
     const {projectsSection, updateAllProjects} = RenderProjectsSection(projectData);
 
-    const sections = RenderComponent({
+    const sections = CreateComponent({
         element: document.createElement("div"),
         className: "sections-container",
     })
