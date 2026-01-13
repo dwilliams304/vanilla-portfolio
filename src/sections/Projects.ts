@@ -1,5 +1,4 @@
-import type { SiteOptions, Component } from "../types";
-import type { Project } from "../data/siteData";
+import type { SiteOptions, Component, Project } from "../types";
 import { mountComponent } from "../utils/mountComponent";
 import { CreateComponent } from "../element-creators/CreateComponent";
 
@@ -47,6 +46,9 @@ const CreateProjectCard = (project: Project, id: string) => {
         updateProject(brevity: SiteOptions["brevity"]){
             let text;
             switch(brevity){
+                case "Shortest":
+                    text = projectDescription.shortest;
+                    break;
                 case "Short":
                     text = projectDescription.short;
                     break;
@@ -59,8 +61,11 @@ const CreateProjectCard = (project: Project, id: string) => {
                 case "Everything":
                     text = projectDescription.everything;
                     break;
+                default:
+                    text = projectDescription.normal;
+                    break;
             }
-            descriptionElement.textContent = text;
+            descriptionElement.textContent = text ?? "No description was provided. Please bother me if you see this!";
         }
     };
 }

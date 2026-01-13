@@ -1,6 +1,5 @@
 import { CreateComponent } from "../element-creators/CreateComponent";
-import type { AboutInfo } from "../data/siteData";
-import type { SiteOptions } from "../types";
+import type { AboutInfo, SiteOptions } from "../types";
 import { mountComponent } from "../utils/mountComponent";
 
 export function RenderAboutSection(aboutData: AboutInfo) {
@@ -33,6 +32,9 @@ export function RenderAboutSection(aboutData: AboutInfo) {
         updateAbout(brevity: SiteOptions["brevity"]) {
             let text;
             switch(brevity){
+                case "Shortest":
+                    text = aboutData.description.shortest
+                    break;
                 case "Short": 
                     text = aboutData.description.short
                     break;
@@ -49,7 +51,7 @@ export function RenderAboutSection(aboutData: AboutInfo) {
                     text = aboutData.description.normal;
                     break;
             }
-            descriptionElement.textContent = text ?? "Nothing was provided.";
+            descriptionElement.textContent = text ?? "Nothing was provided. Please bother me if you see this.";
         }
     }
 }

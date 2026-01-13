@@ -71,6 +71,7 @@ const customizationBar = RenderCustomizationBar(customizationCallbacks);
 const openBarButton = OpenBarButton(customizationBar);
 
 
+
 mountComponent(app, ...layout, sections);
 mountComponent(root, customizationBar, openBarButton);
 ApplySimpleMode(app);

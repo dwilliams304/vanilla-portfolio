@@ -36,13 +36,30 @@ export function RenderCustomizationBar(callbacks: CustomizationCallbacks): HTMLE
 
     const optionsContainer = bar.querySelector<HTMLElement>(".custom-options");
 
+    if (optionsContainer) {
+        mountComponent(
+            optionsContainer,
+            ...CreateCustomizationOptions(callbacks),
+            ...CreateColorPickers(callbacks),
+            CreateCloseButton(bar)
+        );
+    }
+
+    return bar;
+}
+
+
+
+function CreateCustomizationOptions(callbacks: CustomizationCallbacks): HTMLElement[] {
+    
     const brevitySelect = CreateSelectElement<SiteOptions["brevity"]>({
         className: "brevity-select",
         name: "brevity",
         id: "brevity",
         value: UIState.brevity,
         options: [
-            { value: "Short", label: "Qck" },
+            { value: "Shortest", label: "Qck"},
+            { value: "Short", label: "Short" },
             { value: "Normal", label: "Normal" },
             { value: "Longer", label: "Longer Descriptions" },
             { value: "Everything", label: "Give Me All The Details Man!" },
@@ -52,7 +69,7 @@ export function RenderCustomizationBar(callbacks: CustomizationCallbacks): HTMLE
             callbacks.onBrevityChange(brevity);
         }
     });
-
+    
     const styleSelect = CreateSelectElement<SiteOptions["style"]>({
         className: "style-select",
         name: "style",
@@ -68,7 +85,18 @@ export function RenderCustomizationBar(callbacks: CustomizationCallbacks): HTMLE
             callbacks.onStyleChange(style);
         }
     });
+    
+    const simpleModeToggle = CreateSimpleModeToggle(callbacks);
 
+    return [
+        simpleModeToggle,
+        brevitySelect,
+        styleSelect,
+    ]
+}
+
+
+function CreateColorPickers(callbacks: CustomizationCallbacks): HTMLElement[] {
     const primaryColorPicker = CreateColorPicker<string>({
         name: "Primary Color",
         value: UIState.colors.primaryColor,
@@ -87,19 +115,10 @@ export function RenderCustomizationBar(callbacks: CustomizationCallbacks): HTMLE
         }
     });
 
-    if (optionsContainer) {
-        mountComponent(
-            optionsContainer,
-            brevitySelect,
-            styleSelect,
-            primaryColorPicker,
-            textColorPicker,
-            CreateSimpleModeToggle(callbacks),
-            CreateCloseButton(bar)
-        );
-    }
-
-    return bar;
+    return [
+        primaryColorPicker,
+        textColorPicker
+    ]
 }
 
 function CreateSimpleModeToggle(callbacks: CustomizationCallbacks): HTMLElement {

@@ -2,7 +2,7 @@
 type SiteOptions = {
     simpleMode: boolean;
     style: "Default" | "NoStyle" | "Retro";
-    brevity: "Short" | "Normal" | "Longer" | "Everything";
+    brevity: "Shortest" | "Short" | "Normal" | "Longer" | "Everything";
     colors: ColorProperties
 }
 
@@ -14,6 +14,7 @@ type ColorProperties = {
 }
 
 type ModifiableDescription = {
+    shortest: string;
     short: string;
     normal: string;
     longer: string;

@@ -32,6 +32,7 @@
     border: none;
     transition: none;
     min-height: 150px;
+    width: 100%;
 }
 .simple-mode .project-card:hover
 {
@@ -69,6 +70,7 @@
     flex-direction: row;
     justify-content: center;
     gap: 14px;
+    width: 100px;
 }
 .simple-mode .project-card img
 {
