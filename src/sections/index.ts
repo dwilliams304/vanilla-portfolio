@@ -1,6 +1,6 @@
 import { RenderAboutSection } from "./About";
 import { RenderProjectsSection } from "./Projects";
-import type { Project, AboutInfo } from "../data/siteData";
+import type { Project, AboutInfo } from "../types";
 import { CreateComponent } from "../element-creators/CreateComponent";
 import type { SiteOptions } from "../types";
 import { mountComponent } from "../utils/mountComponent";
