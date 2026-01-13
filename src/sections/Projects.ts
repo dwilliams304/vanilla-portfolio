@@ -1,7 +1,7 @@
-import type { CustomOptions } from "../types";
+import type { SiteOptions, Component } from "../types";
 import type { Project } from "../data/siteData";
 import { mountComponent } from "../utils/mountComponent";
-import { CreateComponent, type IComponent } from "../element-creators/CreateComponent";
+import { CreateComponent } from "../element-creators/CreateComponent";
 
 const createProjectButton = (text: string, link: string | undefined): string => {
     if(link) {
@@ -44,7 +44,7 @@ const CreateProjectCard = (project: Project, id: string) => {
     
     return {
         card,
-        updateProject(brevity: CustomOptions["brevity"]){
+        updateProject(brevity: SiteOptions["brevity"]){
             let text;
             switch(brevity){
                 case "Short":
@@ -66,14 +66,14 @@ const CreateProjectCard = (project: Project, id: string) => {
 }
 
 export function RenderProjectsSection(projects: Project[]){
-    let sectionComponentObject: IComponent = {
+    let sectionComponentObject: Component = {
         element: document.createElement("section"),
         className: "projects",
         id: "projects"
     }
 
     const cards: HTMLElement[] = [];
-    const updateProjectCards: ((brevity: CustomOptions["brevity"]) => void)[] = [];
+    const updateProjectCards: ((brevity: SiteOptions["brevity"]) => void)[] = [];
     if(projects.length === 0){
         sectionComponentObject.content = `<h2>For some reason the projects' data couldn't be loaded. Please bother me if you see this</h2>`
     }
@@ -92,7 +92,7 @@ export function RenderProjectsSection(projects: Project[]){
 
     return {
         projectsSection,
-        updateAllProjects(brevity: CustomOptions["brevity"]){
+        updateAllProjects(brevity: SiteOptions["brevity"]){
             updateProjectCards.forEach(update => {
                 update(brevity);
             })

@@ -1,26 +1,4 @@
-export type AboutInfo = {
-    readonly h2: string,
-    readonly h3: string,
-    readonly description: ModifiableDescription,
-    readonly img: string
-}
-
-export type Project = {
-    readonly projectName: string;
-    readonly projectImg: string;
-    readonly techUsed: string[];
-    readonly projectDescription: ModifiableDescription;
-    readonly links: [string, string];
-}
-
-export type ModifiableDescription = {
-    short: string;
-    normal: string;
-    longer: string;
-    everything: string;
-
-}
-
+import type { AboutInfo, Project } from "../types";
 
 const aboutData: AboutInfo = {
     h2: "My name is <span class='txt-highlight-p-cul'>Davis</span>.",

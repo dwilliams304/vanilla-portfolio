@@ -1,16 +1,6 @@
+import type { Component } from "../types";
 
-export interface IComponent
-{
-    element?: HTMLElement
-    id?: string;
-    content?: string;
-    className?: string;
-    onClick?: (e: MouseEvent) => void;
-    onRender?: (el: HTMLElement) => void;
-}
-
-
-export function CreateComponent(component: IComponent){
+export function CreateComponent(component: Component){
     let {element} = component;
     const {id, content, className, onRender, onClick} = component;
 

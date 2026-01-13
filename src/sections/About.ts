@@ -1,6 +1,6 @@
 import { CreateComponent } from "../element-creators/CreateComponent";
 import type { AboutInfo } from "../data/siteData";
-import type { CustomOptions } from "../types";
+import type { SiteOptions } from "../types";
 import { mountComponent } from "../utils/mountComponent";
 
 export function RenderAboutSection(aboutData: AboutInfo) {
@@ -30,7 +30,7 @@ export function RenderAboutSection(aboutData: AboutInfo) {
 
     return {
         aboutSection,
-        updateAbout(brevity: CustomOptions["brevity"]) {
+        updateAbout(brevity: SiteOptions["brevity"]) {
             let text;
             switch(brevity){
                 case "Short": 

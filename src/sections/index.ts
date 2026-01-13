@@ -2,7 +2,7 @@ import { RenderAboutSection } from "./About";
 import { RenderProjectsSection } from "./Projects";
 import type { Project, AboutInfo } from "../data/siteData";
 import { CreateComponent } from "../element-creators/CreateComponent";
-import type { CustomOptions } from "../types";
+import type { SiteOptions } from "../types";
 import { mountComponent } from "../utils/mountComponent";
 
 
@@ -20,7 +20,7 @@ export function RenderAllSections(aboutData: AboutInfo, projectData: Project[]){
     mountComponent(sections, aboutSection, projectsSection);
     return {
         sections,
-        updateBrevity(brevity: CustomOptions["brevity"]) {
+        updateBrevity(brevity: SiteOptions["brevity"]) {
             updateAbout(brevity);
             updateAllProjects(brevity);
         }

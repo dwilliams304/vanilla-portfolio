@@ -1,4 +1,4 @@
-import type { CustomOptions } from "../types";
+import type { SiteOptions } from "../types";
 import { UIState } from "../state/UIState";
 import { CreateColorPicker } from "../element-creators/CreateColorPicker";
 import { CreateSelectElement } from "../element-creators/CreateSelectElement";
@@ -6,8 +6,8 @@ import { mountComponent } from "../utils/mountComponent";
 import { CreateComponent } from "../element-creators/CreateComponent"
 
 type CustomizationCallbacks = {
-    onBrevityChange: (brevity: CustomOptions["brevity"]) => void;
-    onStyleChange: (style: CustomOptions["style"]) => void;
+    onBrevityChange: (brevity: SiteOptions["brevity"]) => void;
+    onStyleChange: (style: SiteOptions["style"]) => void;
     onSimpleModeChange: (simpleMode: boolean) => void;
     onPrimaryColorChange: (color: string) => void;
     onTextColorChange: (color: string) => void;
@@ -36,7 +36,7 @@ export function RenderCustomizationBar(callbacks: CustomizationCallbacks): HTMLE
 
     const optionsContainer = bar.querySelector<HTMLElement>(".custom-options");
 
-    const brevitySelect = CreateSelectElement<CustomOptions["brevity"]>({
+    const brevitySelect = CreateSelectElement<SiteOptions["brevity"]>({
         className: "brevity-select",
         name: "brevity",
         id: "brevity",
@@ -53,7 +53,7 @@ export function RenderCustomizationBar(callbacks: CustomizationCallbacks): HTMLE
         }
     });
 
-    const styleSelect = CreateSelectElement<CustomOptions["style"]>({
+    const styleSelect = CreateSelectElement<SiteOptions["style"]>({
         className: "style-select",
         name: "style",
         id: "style",
