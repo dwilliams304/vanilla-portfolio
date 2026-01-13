@@ -11,13 +11,19 @@ import "./styles/simplemode_sections.css";
 import { CreateComponent } from "./element-creators/CreateComponent";
 
 import { RenderAllSections } from "./sections";
-import { RenderLayout } from "./layout";
+import { RenderLayout, 
+    OpenBarButton, 
+    RenderCustomizationBar } from "./layout";
+
 import { FetchSiteData } from "./data/siteData";
 import { UIState } from "./state/UIState";
-import { mountComponent } from "./utils/mountComponent";
-import { OpenBarButton, RenderCustomizationBar } from "./layout/CustomizationBar";
-import { ApplySimpleMode } from "./utils/ApplySimpleMode";
-import { ApplyPrimaryColor, ApplyTextColor } from "./utils/ApplyColors";
+import { mountComponent, 
+    ApplySimpleMode, 
+    ApplyPrimaryColor, 
+    ApplyTextColor, 
+    ApplyColor} from "./utils";
+import type { CustomOptions } from "./data/customOptions";
+
 
 
 const root = document.getElementById("root")!;
@@ -33,32 +39,33 @@ const {sections, updateBrevity} = RenderAllSections(aboutData, projectData);
 
 const layout = RenderLayout(app);
 
-
-const customizationBar = RenderCustomizationBar({
-    onBrevityChange(brevity) { 
+const customizationCallbacks = {
+     onBrevityChange(brevity: CustomOptions["brevity"]) { 
         updateBrevity(brevity); 
     },
     
-    onStyleChange(style) { 
+    onStyleChange(style: CustomOptions["style"]) { 
         console.log(style); 
     },
     
-    onSimpleModeChange(simpleMode) {
+    onSimpleModeChange(simpleMode: boolean) {
         UIState.simpleMode = simpleMode;
         ApplySimpleMode(app);
     },
 
-    onPrimaryColorChange(color) {
+    onPrimaryColorChange(color: string) {
         UIState.colors.primaryColor = color;
-        ApplyPrimaryColor(app, color);
+        ApplyColor(app, "--primaryColor", color);
     },
     
-    onTextColorChange(color) {
+    onTextColorChange(color: string) {
         UIState.colors.primaryColor = color;
-        ApplyTextColor(app, color);
+        ApplyColor(app, "--textColor", color);
     },
+}
 
-});
+
+const customizationBar = RenderCustomizationBar(customizationCallbacks);
 
 
 const openBarButton = OpenBarButton(customizationBar);

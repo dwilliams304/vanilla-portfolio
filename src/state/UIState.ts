@@ -10,5 +10,4 @@ export const UIState: CustomOptions = {
         backgroundColor: "#1E2526",
         textColor: "#F7FFFD",
     }
-
 }
