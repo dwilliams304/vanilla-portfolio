@@ -1,3 +1,4 @@
+import { CGConsoleImg, ContradictiveGamesImg, HeadshotImg } from "../assets";
 import type { AboutInfo, Project } from "../types";
 
 const aboutData: AboutInfo = {
@@ -9,7 +10,7 @@ const aboutData: AboutInfo = {
         longer: "Long description",
         everything: "Very long description!"
     },
-    img: "https://daviswilliams-portfolio.vercel.app/assets/coin-Q8Ml-U-z.jpg"
+    img: HeadshotImg
 }
 
 const DummyProjectData: Project[] = [
@@ -51,7 +52,7 @@ const DummyProjectData: Project[] = [
     },
     {
         projectName: "Contradictive Games",
-        projectImg: "https://bwsrltsxndfbxnthgmlt.supabase.co/storage/v1/object/sign/Personal%20Projects/ts-job-board.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV80MGIxMDcyMS1jZjI2LTQxZWMtOTZkNy1lYzdkYmUwNGNhNjUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQZXJzb25hbCBQcm9qZWN0cy90cy1qb2ItYm9hcmQucG5nIiwiaWF0IjoxNzYyMDQ5MDY3LCJleHAiOjE3OTM1ODUwNjd9.BykxLFkR3SN3CT0IGXZZZEnAwBQJ8l88mbLFJdbpgE0",
+        projectImg: ContradictiveGamesImg,
         techUsed: ["TypeScript", "Node", "React", "CSS"],
         projectDescription: {
             short: "A 2D top-down shooter game made within the Unity engine.",
@@ -63,7 +64,7 @@ const DummyProjectData: Project[] = [
     },
     {
         projectName: "CGConsole",
-        projectImg: "https://bwsrltsxndfbxnthgmlt.supabase.co/storage/v1/object/sign/Personal%20Projects/ts-job-board.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV80MGIxMDcyMS1jZjI2LTQxZWMtOTZkNy1lYzdkYmUwNGNhNjUiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQZXJzb25hbCBQcm9qZWN0cy90cy1qb2ItYm9hcmQucG5nIiwiaWF0IjoxNzYyMDQ5MDY3LCJleHAiOjE3OTM1ODUwNjd9.BykxLFkR3SN3CT0IGXZZZEnAwBQJ8l88mbLFJdbpgE0",
+        projectImg: CGConsoleImg,
         techUsed: ["Unity", "C#"],
         projectDescription: {
             short: "A 2D top-down shooter game made within the Unity engine.",

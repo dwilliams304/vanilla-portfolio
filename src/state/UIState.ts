@@ -1,7 +1,7 @@
 import type { SiteOptions } from "../types"
 
 export const UIState: SiteOptions = {
-    simpleMode: true,
+    simpleMode: false,
     style: "Default",
     brevity: "Normal",
     colors: {
