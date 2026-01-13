@@ -1,5 +1,6 @@
 import type { CustomOptions } from "../data/customOptions";
 import { UIState } from "../state/UIState";
+import { CreateColorPicker } from "../utils/CreateColorPicker";
 import { CreateSelectElement } from "../utils/CreateSelectElement";
 import { mountComponent } from "../utils/mountComponent";
 import { RenderComponent } from "../utils/RenderComponent"
@@ -66,21 +67,33 @@ export function RenderCustomizationBar(callbacks: CustomizationCallbacks): HTMLE
             UIState.style = style;
             callbacks.onStyleChange(style);
         }
-    })
+    });
+
+    const primaryColorPicker = CreateColorPicker<CustomOptions["primaryColor"]>({
+        name: "Primary Color",
+        value: UIState.primaryColor,
+        onChange: (color) => {
+            UIState.primaryColor = color;
+            callbacks.onPrimaryColorChange(color);
+        }
+    });
+
+    const textColorPicker = CreateColorPicker<CustomOptions["textColor"]>({
+        name: "Text Color",
+        value: UIState.textColor,
+        onChange: (color) => {
+            UIState.secondaryColor = color;
+            callbacks.onTextColorChange(color);
+        }
+    });
 
     if (optionsContainer) {
         mountComponent(
             optionsContainer,
             brevitySelect,
             styleSelect,
-            CreatePrimaryColorPicker((color) => {
-                UIState.primaryColor = color;
-                callbacks.onPrimaryColorChange(color);
-            }),
-            CreateTextColorPicker((color) => {
-                UIState.textColor = color;
-                callbacks.onTextColorChange(color);
-            }),
+            primaryColorPicker,
+            textColorPicker,
             CreateSimpleModeToggle(callbacks),
             CreateCloseButton(bar)
         );
@@ -116,41 +129,4 @@ function CreateCloseButton(bar: HTMLElement): HTMLElement {
     });
 
     return button;
-}
-
-function CreatePrimaryColorPicker(
-    onChange: (color: string) => void
-): HTMLElement {
-
-    const label = document.createElement("label");
-    label.textContent = "Primary Color";
-
-    const input = document.createElement("input");
-    input.type = "color";
-    input.value = UIState.primaryColor;
-
-    input.addEventListener("input", () => {
-        onChange(input.value);
-    });
-
-    label.appendChild(input);
-    return label;
-}
-function CreateTextColorPicker(
-    onChange: (color: string) => void
-): HTMLElement {
-
-    const label = document.createElement("label");
-    label.textContent = "Text Color";
-
-    const input = document.createElement("input");
-    input.type = "color";
-    input.value = UIState.textColor;
-
-    input.addEventListener("input", () => {
-        onChange(input.value);
-    });
-
-    label.appendChild(input);
-    return label;
 }

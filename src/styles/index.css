@@ -35,7 +35,7 @@
 
 body {
   background-color: var(--backgroundColor);
-  /* color: var(--textColor) */
+  color: var(--textColor)
 }
 
 p, h2, h1, h3 {
