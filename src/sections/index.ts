@@ -2,7 +2,7 @@ import { RenderAboutSection } from "./About";
 import { RenderProjectsSection } from "./Projects";
 import type { Project, AboutInfo } from "../data/siteData";
 import { CreateComponent } from "../element-creators/CreateComponent";
-import type { CustomOptions } from "../data/customOptions";
+import type { CustomOptions } from "../types";
 import { mountComponent } from "../utils/mountComponent";
 
 

@@ -1,4 +1,4 @@
-import type { CustomOptions } from "../data/customOptions";
+import type { CustomOptions } from "../types";
 import type { Project } from "../data/siteData";
 import { mountComponent } from "../utils/mountComponent";
 import { CreateComponent, type IComponent } from "../element-creators/CreateComponent";

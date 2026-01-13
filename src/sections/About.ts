@@ -1,6 +1,6 @@
 import { CreateComponent } from "../element-creators/CreateComponent";
 import type { AboutInfo } from "../data/siteData";
-import type { CustomOptions } from "../data/customOptions";
+import type { CustomOptions } from "../types";
 import { mountComponent } from "../utils/mountComponent";
 
 export function RenderAboutSection(aboutData: AboutInfo) {

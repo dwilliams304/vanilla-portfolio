@@ -18,12 +18,11 @@ import { RenderLayout,
 import { FetchSiteData } from "./data/siteData";
 import { UIState } from "./state/UIState";
 import { mountComponent, 
-    ApplySimpleMode, 
-    ApplyPrimaryColor, 
-    ApplyTextColor, 
+    ApplySimpleMode,
     ApplyColor} from "./utils";
-import type { CustomOptions } from "./data/customOptions";
+import type { SiteOptions } from "./types";
 import { primaryColorProperty, textColorProperty } from "./utils/constants";
+import { ApplyAllColors } from "./utils/ApplyColors";
 
 
 
@@ -41,11 +40,11 @@ const {sections, updateBrevity} = RenderAllSections(aboutData, projectData);
 const layout = RenderLayout(app);
 
 const customizationCallbacks = {
-     onBrevityChange(brevity: CustomOptions["brevity"]) { 
+     onBrevityChange(brevity: SiteOptions["brevity"]) { 
         updateBrevity(brevity); 
     },
     
-    onStyleChange(style: CustomOptions["style"]) { 
+    onStyleChange(style: SiteOptions["style"]) { 
         console.log(style); 
     },
     
@@ -75,5 +74,5 @@ const openBarButton = OpenBarButton(customizationBar);
 mountComponent(app, ...layout, sections);
 mountComponent(root, customizationBar, openBarButton);
 ApplySimpleMode(app);
-ApplyPrimaryColor(app, UIState.colors.primaryColor);
-ApplyTextColor(app, UIState.colors.textColor);
+
+ApplyAllColors(app, UIState.colors);

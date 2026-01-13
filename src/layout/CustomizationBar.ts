@@ -1,4 +1,4 @@
-import type { CustomOptions } from "../data/customOptions";
+import type { CustomOptions } from "../types";
 import { UIState } from "../state/UIState";
 import { CreateColorPicker } from "../element-creators/CreateColorPicker";
 import { CreateSelectElement } from "../element-creators/CreateSelectElement";

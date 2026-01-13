@@ -1,6 +1,6 @@
-import type { CustomOptions } from "../data/customOptions";
+import type { SiteOptions } from "../types"
 
-export const UIState: CustomOptions = {
+export const UIState: SiteOptions = {
     simpleMode: true,
     style: "Default",
     brevity: "Normal",
