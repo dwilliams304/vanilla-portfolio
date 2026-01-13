@@ -69,20 +69,20 @@ export function RenderCustomizationBar(callbacks: CustomizationCallbacks): HTMLE
         }
     });
 
-    const primaryColorPicker = CreateColorPicker<CustomOptions["primaryColor"]>({
+    const primaryColorPicker = CreateColorPicker<string>({
         name: "Primary Color",
-        value: UIState.primaryColor,
+        value: UIState.colors.primaryColor,
         onChange: (color) => {
-            UIState.primaryColor = color;
+            UIState.colors.primaryColor = color;
             callbacks.onPrimaryColorChange(color);
         }
     });
 
-    const textColorPicker = CreateColorPicker<CustomOptions["textColor"]>({
+    const textColorPicker = CreateColorPicker<string>({
         name: "Text Color",
-        value: UIState.textColor,
+        value: UIState.colors.textColor,
         onChange: (color) => {
-            UIState.secondaryColor = color;
+            UIState.colors.textColor = color;
             callbacks.onTextColorChange(color);
         }
     });

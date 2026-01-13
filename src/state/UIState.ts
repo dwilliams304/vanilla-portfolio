@@ -4,19 +4,11 @@ export const UIState: CustomOptions = {
     simpleMode: true,
     style: "Default",
     brevity: "Normal",
-    primaryColor: "#02F0A1",
-    secondaryColor: "#F00251",
-    backgroundColor: "#1E2526",
-    textColor: "#F7FFFD",
+    colors: {
+        primaryColor: "#02F0A1",
+        secondaryColor: "#F00251",
+        backgroundColor: "#1E2526",
+        textColor: "#F7FFFD",
+    }
 
-}
-
-const defaults: CustomOptions = {
-    simpleMode: true,
-    style: "Default",
-    brevity: "Normal",
-    primaryColor: "#02F0A1",
-    secondaryColor: "#F00251",
-    backgroundColor: "#1E2526",
-    textColor: "#F7FFFD",
 }

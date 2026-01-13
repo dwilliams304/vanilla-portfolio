@@ -49,12 +49,12 @@ const customizationBar = RenderCustomizationBar({
     },
 
     onPrimaryColorChange(color) {
-        UIState.primaryColor = color;
+        UIState.colors.primaryColor = color;
         ApplyPrimaryColor(app, color);
     },
     
     onTextColorChange(color) {
-        UIState.primaryColor = color;
+        UIState.colors.primaryColor = color;
         ApplyTextColor(app, color);
     },
 
@@ -67,5 +67,5 @@ const openBarButton = OpenBarButton(customizationBar);
 mountComponent(app, ...layout, sections);
 mountComponent(root, customizationBar, openBarButton);
 ApplySimpleMode(app);
-ApplyPrimaryColor(app, UIState.primaryColor);
-ApplyTextColor(app, UIState.textColor);
+ApplyPrimaryColor(app, UIState.colors.primaryColor);
+ApplyTextColor(app, UIState.colors.textColor);
