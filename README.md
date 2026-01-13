@@ -1,4 +1,4 @@
-# Davis Williams TypeScript Portfolio
+# TypeScript Portfolio Site
 
 This is my personal portfolio website, built to showcase different projects I've contributed to in some way. 
 
@@ -7,14 +7,19 @@ The site has two modes:
 - **Simple Mode**: A clean, resume-like view - meant to be easily readable without any fancy effects.
 - **Cool Mode**: A more interactive and visually appealing (maybe) experience with fancy effects
 
+
 ## Features
 
 - Responsive mobile/desktop layout
 - Dynamic content for About and Projects
-- Toggle button between simple/cool mode
-- Adjustable verbosity for descriptions (ranging from short -> very detailed)
-- Interactive header w/ random dynamic text
+- Site Customization Including:
+    - Description lengths (from short -> very verbose)
+    - Site Colors (primary color, text color)
+    - Mode toggle (Simple/Cool Mode)
+- Interactive header w/ a random text selector
+    - This chooses from a list in the `headerslist.ts` file
 - Modular component system built with TypeScript using vanilla DOM manipulation
+
 
 ## Tech Stack
 
@@ -23,11 +28,14 @@ The site has two modes:
 - Vite
 - Vercel (hosting)
 
+
 ## Project Structure
 
 ```bash
 /src
+    /assets # Any images that I use
     /data # Filler/back-up for projects/about (including some types)
+    /element-creators # This contains all the files that I use to create the site's elements
     /layout # Layout elements (nav bar, header)
     /sections # Each project section (About, Projects, Contact)
     /state # Home to 1 file, but where we'd have more state containers
@@ -35,7 +43,9 @@ The site has two modes:
     /utils # Utilitiy and helper functions used across the project
     index.html # HTML Entry
     main.ts # Entry TypeScript file
+    types.ts # All types within the project
 ```
+
 
 ## Installation
 
@@ -67,15 +77,15 @@ Build for production:
 npm run build
 ```
 
-## Usage
 
-- Toggle between Simple/Cool Mode using the button under the sections list.
-- Adjust the description length for the projects and about section via radio buttons.
-- Click the header to randomize the displayed name.
+## Site Customization
+
+To begin customizing the site - click on the 'Customize!' button. This will open the customization menu. In this menu, you can modify the length of all the descriptions, the style of the site, the primary color/text color, and whether or not you'd like to see it in Simple Mode or not. 
+
 
 ## Contributing
 
-This repository is a personal projects, and therefore contributions are not generally accepted. However, if you (for some reason) really, really, really want to, they're welcome for:
+This repository is a personal project, therefore contributions are not generally accepted. However, if you (for some reason) really, really, really want to, they're welcome for:
 
 - Improving UI/UX
 - Refactoring/optimizations
