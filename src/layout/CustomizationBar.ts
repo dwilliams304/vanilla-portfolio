@@ -10,6 +10,8 @@ type CustomizationCallbacks = {
     onStyleChange: (style: SiteOptions["style"]) => void;
     onSimpleModeChange: (simpleMode: boolean) => void;
     onPrimaryColorChange: (color: string) => void;
+    onSecondaryColorChange: (color: string) => void;
+    onBackgroundColorChange: (color: string) => void;
     onTextColorChange: (color: string) => void;
 }
 
@@ -55,6 +57,7 @@ function CreateCustomizationOptions(callbacks: CustomizationCallbacks): HTMLElem
     const brevitySelect = CreateSelectElement<SiteOptions["brevity"]>({
         className: "brevity-select",
         name: "brevity",
+        labelText: "Brevity",
         id: "brevity",
         value: UIState.brevity,
         options: [
@@ -73,12 +76,13 @@ function CreateCustomizationOptions(callbacks: CustomizationCallbacks): HTMLElem
     const styleSelect = CreateSelectElement<SiteOptions["style"]>({
         className: "style-select",
         name: "style",
+        labelText: "Site Style",
         id: "style",
         value: UIState.style,
         options: [
-            { value: "Default", label: "Modern" },
-            { value: "NoStyle", label: "None" },
-            { value: "Retro", label: "Retro" }
+            { value: "Default", label: "NOT IMPLEMENTED YET" },
+            { value: "NoStyle", label: "NOT IMPLEMENTED YET" },
+            { value: "Retro", label: "NOT IMPLEMENTED YET" }
         ],
         onChange: (style) => {
             UIState.style = style;
@@ -105,7 +109,23 @@ function CreateColorPickers(callbacks: CustomizationCallbacks): HTMLElement[] {
             callbacks.onPrimaryColorChange(color);
         }
     });
-
+    const secondaryColorPicker = CreateColorPicker<string>({
+        name: "Secondary Color",
+        value: UIState.colors.secondaryColor,
+        onChange: (color) => {
+            UIState.colors.secondaryColor = color;
+            callbacks.onSecondaryColorChange(color);
+        }
+    });
+    const backgroundColorPicker = CreateColorPicker<string>({
+        name: "BG Color",
+        value: UIState.colors.backgroundColor,
+        onChange: (color) => {
+            UIState.colors.backgroundColor = color;
+            callbacks.onBackgroundColorChange(color);
+        }
+    });
+    
     const textColorPicker = CreateColorPicker<string>({
         name: "Text Color",
         value: UIState.colors.textColor,
@@ -117,6 +137,8 @@ function CreateColorPickers(callbacks: CustomizationCallbacks): HTMLElement[] {
 
     return [
         primaryColorPicker,
+        secondaryColorPicker,
+        backgroundColorPicker,
         textColorPicker
     ]
 }

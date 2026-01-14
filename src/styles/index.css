@@ -33,9 +33,13 @@
   --trs_LONG: all 300ms ease-in-out;
 }
 
-body {
+.app {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  min-width: 100vw;
+  overflow: hidden;
   background-color: var(--backgroundColor);
-  color: var(--textColor)
 }
 
 p, h2, h1, h3 {
@@ -67,6 +71,11 @@ textarea
   position: relative;
 }
 
+select, input {
+  margin-top: 6px;
+  justify-content: end;
+  align-items: end;
+}
 
 button
 {

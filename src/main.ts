@@ -21,7 +21,7 @@ import { mountComponent,
     ApplySimpleMode,
     ApplyColor} from "./utils";
 import type { SiteOptions } from "./types";
-import { primaryColorProperty, textColorProperty } from "./utils/constants";
+import { backgroundColorProperty, primaryColorProperty, secondaryColorProperty, textColorProperty } from "./utils/constants";
 import { ApplyAllColors } from "./utils/ApplyColors";
 
 
@@ -61,6 +61,16 @@ const customizationCallbacks = {
     onTextColorChange(color: string) {
         UIState.colors.primaryColor = color;
         ApplyColor(app, textColorProperty, color);
+    },
+    
+    onSecondaryColorChange(color: string) {
+        UIState.colors.secondaryColor = color;
+        ApplyColor(app, secondaryColorProperty, color);
+    },
+
+    onBackgroundColorChange(color: string) {
+        UIState.colors.backgroundColor = color;
+        ApplyColor(app, backgroundColorProperty, color);
     },
 }
 

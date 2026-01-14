@@ -1,6 +1,7 @@
 type SelectElementProps<T extends string> = {
     className?: string,
     name: string,
+    labelText?: string,
     id: string,
     value: T,
     options: OptionElement<T>[],
@@ -15,12 +16,17 @@ type OptionElement<T extends string> = {
 export function CreateSelectElement<T extends string>({
     className,
     name,
+    labelText,
     id,
     value,
     options,
     onChange
 
-}: SelectElementProps<T>): HTMLSelectElement {
+}: SelectElementProps<T>): HTMLElement {
+    const label = document.createElement("label");
+    labelText ? label.textContent = labelText : label.textContent = name;
+
+
     const select = document.createElement("select");
     if (className) select.classList.add(className);
 
@@ -38,6 +44,8 @@ export function CreateSelectElement<T extends string>({
     if (onChange) {
         select.addEventListener("change", () => onChange(select.value as T));
     }
+    
+    label.append(select);
 
-    return select;
+    return label;
 }

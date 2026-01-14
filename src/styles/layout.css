@@ -38,7 +38,8 @@ header h1:hover {
 /* Sections List */
 .sections-list {
   position: fixed;
-  display: flex;
+  /* TEMPORARILY DISABLE THE SECTIONS LIST */
+  display: none;
   flex-direction: column;
   top: 23%;
   width: 11%;
@@ -65,7 +66,6 @@ header h1:hover {
 
 
 /* Customization Bar */
-
 .customization-bar {
   position: fixed;
   top: 2rem;
