@@ -42,7 +42,7 @@
   background-color: var(--backgroundColor);
 }
 
-p, h2, h1, h3 {
+p, h2, h1, h2, h3, span {
   color: var(--textColor);
 }
 
@@ -60,11 +60,6 @@ textarea
 .txt-highlight-s-co {
   color: var(--secondaryColor);
 }
-/* HIGHLIGHT PRIMARY COLOR, COLOR W/ UNDERLINE */
-.txt-highlight-p-cul {
-  color: var(--primaryColor);
-  text-decoration: underline;
-}
 
 /* Underline grows from center to edge of text */
 .txt-underline-effect{
@@ -80,7 +75,8 @@ select, input {
 button
 {
   background-color: rgba(0, 0, 0, 0);
-  border: 1px solid var(--primaryColor);
+  border: 1px solid;
+  border-color: var(--primaryColor);
   color: var(--primaryColor);
   cursor: pointer;
   font-size: 14px;
