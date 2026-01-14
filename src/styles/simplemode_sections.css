@@ -148,3 +148,20 @@
     background-color: var(--backgroundColor_Dark);
     color: var(--textColor);
 }
+
+
+@media (max-width: 768px) {
+
+  .simple-mode section {
+    width: 95%;
+  }
+
+  .simple-mode .project-card-left div {
+    display: none;
+  }
+
+  .simple-mode .project-card-buttons {
+    flex-direction: row;
+  }
+
+}

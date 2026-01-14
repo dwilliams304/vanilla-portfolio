@@ -1,65 +1,65 @@
 /* Header */
 header {
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    margin: 4rem 0;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  margin: 4rem 0;
 }
 
 header h1 {
-    font-size: 40px;
-    font-weight: 700;
-    text-align: center;
-    cursor: pointer;
-    user-select: none;
+  font-size: 40px;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
 }
 
 
 header h1:hover {
-    animation: header-hover 500ms infinite;
+  animation: header-hover 500ms infinite;
 }
 
 @keyframes header-hover {
-    0% {
-        transform: scale(1);
-    }
+  0% {
+    transform: scale(1);
+  }
 
-    50% {
-        transform: scale(1.1);
-    }
+  50% {
+    transform: scale(1.1);
+  }
 
-    100% {
-        transform: scale(1);
-    }
+  100% {
+    transform: scale(1);
+  }
 }
 
 
 
 /* Sections List */
 .sections-list {
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    top: 23%;
-    width: 11%;
-    padding: 0 24px;
-    text-transform: uppercase;
-    font-size: 24px;
-    font-weight: 600;
-    text-align: right;
-    gap: 14px;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  top: 23%;
+  width: 11%;
+  padding: 0 24px;
+  text-transform: uppercase;
+  font-size: 24px;
+  font-weight: 600;
+  text-align: right;
+  gap: 14px;
 }
 
 .sections-list ul {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
 .sections-list li:hover {
-    cursor: pointer;
-    color: var(--secondaryColor);
-    transition: var(--trs_SHORT)
+  cursor: pointer;
+  color: var(--secondaryColor);
+  transition: var(--trs_SHORT)
 }
 
 
@@ -88,11 +88,12 @@ header h1:hover {
   opacity: 1;
   pointer-events: auto;
 
-  transition: 
+  transition:
     transform 300ms ease,
     opacity 200ms ease,
     background-color 200ms ease;
 }
+
 .customization-bar.is-closed {
   transform: translateY(-1.5rem);
   opacity: 0;
@@ -117,7 +118,7 @@ header h1:hover {
   gap: 1rem;
 }
 
-.custom-options select { 
+.custom-options select {
   padding: .5rem 1.5rem;
   background-color: var(--backgroundColor_Dark);
   color: var(--primaryColor);
@@ -133,7 +134,10 @@ header h1:hover {
   z-index: 1000;
 
   transition: all 200ms ease;
+  background-color: rgba(0, 0, 0, .6);
+  backdrop-filter: blur(25px);
 }
+
 .open-button:hover {
   color: var(--textColor);
   border-color: var(--textColor);
@@ -151,4 +155,27 @@ header h1:hover {
 .close-button:hover {
   color: var(--textColor);
   border-color: var(--textColor);
+}
+
+
+@media (max-width: 1028px){
+    .sections-list {
+        display: none;
+    }
+}
+
+
+@media (max-width: 768px) {
+
+  .customization-bar {
+    position: fixed;
+    top: 4.5rem;
+    left: 5%;
+    width: 90%;
+    padding: 24px 0;
+  }
+
+  .custom-options {
+    flex-direction: column;
+  }
 }
