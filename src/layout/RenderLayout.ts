@@ -4,24 +4,6 @@ import { CreateComponent } from "../element-creators/CreateComponent"
 
 
 export function RenderLayout(root: HTMLElement): HTMLElement[]{
-    const brevityControls = CreateComponent({
-        className: "brevity-controls",
-    })
-
-
-    const sectionsList = CreateComponent({
-        element: document.createElement("aside"),
-        className: "sections-list",
-        content: `
-            <ul>
-                <li class="txt-underline-effect">About</li>
-                <li class="txt-underline-effect">Projects</li>
-                <li class="txt-underline-effect">Contact</li>
-            </ul>
-        `
-    });
-
-    mountComponent(sectionsList, brevityControls);
 
 
 
@@ -49,5 +31,5 @@ export function RenderLayout(root: HTMLElement): HTMLElement[]{
         titleComponent.textContent = `${currentHeader}.dev`;
     });
 
-    return [sectionsList, headerComponent]
+    return [headerComponent]
 }
