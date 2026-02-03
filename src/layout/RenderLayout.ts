@@ -4,9 +4,6 @@ import { CreateComponent } from "../element-creators/CreateComponent"
 
 
 export function RenderLayout(root: HTMLElement): HTMLElement[]{
-
-
-
     let currentHeader = "daviswilliams.dev";
 
     const headerComponent = CreateComponent({
