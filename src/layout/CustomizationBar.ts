@@ -73,29 +73,29 @@ function CreateCustomizationOptions(callbacks: CustomizationCallbacks): HTMLElem
         }
     });
     
-    const styleSelect = CreateSelectElement<SiteOptions["style"]>({
-        className: "style-select",
-        name: "style",
-        labelText: "Site Style",
-        id: "style",
-        value: UIState.style,
-        options: [
-            { value: "Default", label: "NOT IMPLEMENTED YET" },
-            { value: "NoStyle", label: "NOT IMPLEMENTED YET" },
-            { value: "Retro", label: "NOT IMPLEMENTED YET" }
-        ],
-        onChange: (style) => {
-            UIState.style = style;
-            callbacks.onStyleChange(style);
-        }
-    });
+    // const styleSelect = CreateSelectElement<SiteOptions["style"]>({
+    //     className: "style-select",
+    //     name: "style",
+    //     labelText: "Site Style",
+    //     id: "style",
+    //     value: UIState.style,
+    //     options: [
+    //         { value: "Default", label: "NOT IMPLEMENTED YET" },
+    //         { value: "NoStyle", label: "NOT IMPLEMENTED YET" },
+    //         { value: "Retro", label: "NOT IMPLEMENTED YET" }
+    //     ],
+    //     onChange: (style) => {
+    //         UIState.style = style;
+    //         callbacks.onStyleChange(style);
+    //     }
+    // });
     
     const simpleModeToggle = CreateSimpleModeToggle(callbacks);
 
     return [
         simpleModeToggle,
         brevitySelect,
-        styleSelect,
+        // styleSelect,
     ]
 }
 
@@ -118,7 +118,7 @@ function CreateColorPickers(callbacks: CustomizationCallbacks): HTMLElement[] {
         }
     });
     const backgroundColorPicker = CreateColorPicker<string>({
-        name: "BG Color",
+        name: "Background Color",
         value: UIState.colors.backgroundColor,
         onChange: (color) => {
             UIState.colors.backgroundColor = color;
@@ -156,7 +156,7 @@ function CreateSimpleModeToggle(callbacks: CustomizationCallbacks): HTMLElement 
         callbacks.onSimpleModeChange(checkbox.checked);
     })
 
-    label.prepend(checkbox);
+    label.append(checkbox);
     return label;
 }
 

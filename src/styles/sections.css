@@ -7,7 +7,7 @@
 }
 
 section {
-    width: 70%;
+    width: 80%;
     margin: 0 auto;
 }
 
@@ -57,11 +57,10 @@ section {
     display: flex;
     justify-content: space-between;
     transform: translateY(0px);
-    border: 1px solid var(--backgroundColor_Dark);
+    border: 1px dashed var(--backgroundColor_Dark);
     padding: 2rem;
-    gap: 18px;
+    gap: 10px;
     transition: all 250ms ease-in-out;
-    width: 90%;
 }
 
 .project-card:hover {
@@ -82,10 +81,10 @@ section {
 .project-card-left {
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 10px;
     position: relative;
     padding-right: 4px;
-    border-right: 1px solid var(--primaryColor);
+    border-right: 1px inset var(--primaryColor);
     flex-grow: 1;
 }
 
@@ -102,14 +101,15 @@ section {
 .project-card-right {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
     gap: 14px;
-    width: 265px;
+    width: 50%;
 }
 
 .project-card img {
-    max-width: 250px;
-    height: 250px;
+    max-width: 275px;
+    height: 225px;
     object-fit: cover;
 }
 
